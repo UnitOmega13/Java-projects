@@ -33,7 +33,7 @@ public class Main {
 					matchNum2 = scanner.nextInt();
 					matchNum3 = scanner.nextInt();
 					matchNum4 = scanner.nextInt();
-					System.out.println(calculator.countResult(matchNum1, matchNum2, matchNum3, matchNum4));
+					calculator.countResult(matchNum1,matchNum2,matchNum3,matchNum4);
 					break;
 				case 2:
 					System.out.println("Please input max number of stars in line");
