@@ -12,18 +12,20 @@ public class Main {
         RobotMove robotMove = new RobotMove();
         RoleSorter roleSorter = new RoleSorter();
         Factorial factorial = new Factorial();
+        Palindrome palindrome = new Palindrome();
         System.out.println("Choose task:");
         System.out.println("1 - Array combine and sort");
         System.out.println("2 - Role Sorter");
         System.out.println("3 - Robot mover");
         System.out.println("4 - Redefinition of methods");
         System.out.println("5 - Factorial");
+        System.out.println("6 - Palindrome check");
         Scanner scanner = new Scanner(System.in);
         choice = scanner.nextInt();
-        if (choice > 5) {
+        if (choice > 6) {
             System.out.println("This task does`t exists.");
         } else if (choice < 1) {
-            System.out.println("Sorry you need to choose from 1 to 5.");
+            System.out.println("Sorry you need to choose from 1 to 6.");
         } else {
             switch (choice) {
                 case 1:
@@ -56,6 +58,10 @@ public class Main {
                 case 5:
                     int numberForFractal = 3;
                     factorial.factorialFinder(numberForFractal);
+                    break;
+                case 6:
+                    String stringForCheck = "Madam, I'm Adam!";
+                    palindrome.ispPlindrome(stringForCheck);
                     break;
                 default:
                     break;

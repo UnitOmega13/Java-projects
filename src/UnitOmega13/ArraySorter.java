@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class ArraySorter {
 
-
-
 	public void arraySorter(int[] array1, int[] array2) {
 		int[] complitedArray = new int[array1.length + array2.length];
 		int i=0, j=0, k=0;
