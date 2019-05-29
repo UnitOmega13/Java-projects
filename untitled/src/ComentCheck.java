@@ -1,5 +1,3 @@
-package UnitOmega13;
-
 public class ComentCheck {
 
 	abstract class KeywordAnalyzer implements TextAnalyzer {

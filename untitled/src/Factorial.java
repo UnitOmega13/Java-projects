@@ -1,8 +1,6 @@
-package UnitOmega13;
+class Factorial {
 
-public class Factorial {
-
-	public void factorialFinder(int number) {
+	void factorialFinder(int number) {
 		int result = 1;
 		for (int i = number; i >= 1; i--) {
 			result = result * i;

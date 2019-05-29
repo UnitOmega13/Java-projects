@@ -1,5 +1,3 @@
-package UnitOmega13;
-
 import java.util.Random;
 
 public class RobotNew {
@@ -7,7 +5,7 @@ public class RobotNew {
 	private Random random = new Random();
 	private String randomdirection;
 
-	public String getDirection() {
+	String getDirection() {
 		int INDEXn = random.nextInt(listDirections.length);
 		for (int i2 = 0; i2 < INDEXn; i2++) {
 			randomdirection = (String) (listDirections[INDEXn]);
