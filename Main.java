@@ -1,13 +1,17 @@
-package UnitOmega13;
+package unitOmega13;
 
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		int choice;
-		int matchNum1, matchNum2, matchNum3, matchNum4;
+		int matchNum1;
+		int matchNum2;
+		int matchNum3;
+		int matchNum4;
 		int numberOfStars;
-		int number, degree;
+		int number;
+		int degree;
 		MatchCalculator calculator = new MatchCalculator();
 		Drawing drawing = new Drawing();
 		Calculating exponental = new Calculating();
