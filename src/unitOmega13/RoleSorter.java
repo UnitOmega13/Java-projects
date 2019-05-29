@@ -10,6 +10,7 @@ public class RoleSorter {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
 	}
+
 	public String printTextPerEveryRole(String[] roles, String[] textLines) {
 		StringBuilder sb = new StringBuilder();
 		String roleWithSuffix;

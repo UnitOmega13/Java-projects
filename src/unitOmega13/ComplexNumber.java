@@ -13,6 +13,7 @@ public class ComplexNumber {
 	public double getRe() {
 		return re;
 	}
+
 	public double getIm() {
 		return im;
 	}

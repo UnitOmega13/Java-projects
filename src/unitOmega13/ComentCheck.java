@@ -1,6 +1,6 @@
 package UnitOmega13;
 
-public class ComentCheck{
+public class ComentCheck {
 
 	abstract class KeywordAnalyzer implements TextAnalyzer {
 		protected abstract String[] getKeywords();
@@ -67,6 +67,7 @@ public class ComentCheck{
 				return Label.OK;
 		}
 	}
+
 	public Label checkLabels(TextAnalyzer[] analyzers, String text) {
 		for (int i = 0; i < analyzers.length; i++)
 			if (analyzers[i].processText(text) != Label.OK)
