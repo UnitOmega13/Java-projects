@@ -59,7 +59,7 @@ public class Main {
 					break;
 				case 6:
 					String stringForCheck = "Madam, I'm Adam!";
-					palindrome.ispPlindrome(stringForCheck);
+					palindrome.isPalindrome(stringForCheck);
 					break;
 				default:
 					break;

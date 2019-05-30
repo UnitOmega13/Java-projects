@@ -18,16 +18,16 @@ public class AsciiCharSequence implements CharSequence {
 	@Override
 	public CharSequence subSequence(int start, int end) {
 		byte[] result = new byte[end - start];
-		if (end - start >= 0) System.arraycopy(stringReplace, start, result, start - start, end - start);
+		if (end - start >= 0) {
+			System.arraycopy(stringReplace, start, result, start - start, end - start);
+		}
 		return new AsciiCharSequence(result);
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder result = new StringBuilder(stringReplace.length);
-		for (byte b : stringReplace) {
-			result.append((char) b);
-		}
-		return result.toString();
+	public java.lang.String toString() {
+		return "AsciiCharSequence{" +
+				"stringReplace=" + java.util.Arrays.toString(stringReplace) +
+				'}';
 	}
 }
