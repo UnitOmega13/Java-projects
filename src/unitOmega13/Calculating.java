@@ -1,6 +1,4 @@
-package unitOmega13;
-
-class Calculating {
+public class Calculating {
 
 	long exponentiation(int number, int power) {
 		int result = 1;

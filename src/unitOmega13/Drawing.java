@@ -1,7 +1,5 @@
-package unitOmega13;
-
 class Drawing {
-	private char[][] part1;
+	private char[][] firstPart;
 	private int maxSizeOfStarsInLine;
 
 	void drawStars(int maxNumberOfStars) {
@@ -9,7 +7,7 @@ class Drawing {
 		if (maxSizeOfStarsInLine % 2 == 0) {
 			everySecondLine();
 		} else {
-			everythirdLine();
+			everyThirdLine();
 		}
 		printStars();
 	}
@@ -25,27 +23,27 @@ class Drawing {
 
 	private void printLines(int index) {
 		for (int icell = 0; icell < maxSizeOfStarsInLine; icell++) {
-			System.out.print(part1[index][icell]);
+			System.out.print(firstPart[index][icell]);
 		}
 		System.out.println();
 	}
 
 	private void everySecondLine() {
 		maxSizeOfStarsInLine++;
-		everythirdLine();
+		everyThirdLine();
 		for (int unevenLine = 1; unevenLine < maxSizeOfStarsInLine / 2 + 1; unevenLine++) {
-			part1[unevenLine][maxSizeOfStarsInLine / 2] = ' ';
+			firstPart[unevenLine][maxSizeOfStarsInLine / 2] = ' ';
 		}
 
 	}
 
-	private void everythirdLine() {
-		part1 = new char[maxSizeOfStarsInLine / 2 + 1][maxSizeOfStarsInLine];
+	private void everyThirdLine() {
+		firstPart = new char[maxSizeOfStarsInLine / 2 + 1][maxSizeOfStarsInLine];
 		int newStar = maxSizeOfStarsInLine / 2;
 		int numberOfStars = 1;
 		for (int lineInCompleted = 0; lineInCompleted < maxSizeOfStarsInLine / 2 + 1; lineInCompleted++) {
 			for (int completedStars = 0; completedStars < numberOfStars; completedStars++) {
-				part1[lineInCompleted][newStar++] = '*';
+				firstPart[lineInCompleted][newStar++] = '*';
 			}
 			if (numberOfStars + 2 <= maxSizeOfStarsInLine) {
 				numberOfStars += 2;
