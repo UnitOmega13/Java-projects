@@ -17,12 +17,19 @@ public class ComplexNumber {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		ComplexNumber complexNumber = (ComplexNumber) o;
-		if (Double.compare(complexNumber.re, re) != 0) return false;
-		return Double.compare(complexNumber.im, im) == 0;
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (object == null ) {
+			return false;
+		}
+		if(object instanceof ComplexNumber) {
+			ComplexNumber complexNumber = (ComplexNumber) object;
+			if (Double.compare(complexNumber.re, re) != 0) {
+				return false;
+			}
+			return Double.compare(complexNumber.im, im) == 0;
+		}
+		return false;
 	}
 
 	@Override
