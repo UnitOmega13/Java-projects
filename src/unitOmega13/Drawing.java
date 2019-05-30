@@ -1,3 +1,5 @@
+package unitOmega13;
+
 class Drawing {
 	private char[][] firstPart;
 	private int maxSizeOfStarsInLine;
@@ -7,7 +9,7 @@ class Drawing {
 		if (maxSizeOfStarsInLine % 2 == 0) {
 			everySecondLine();
 		} else {
-			everyThirdLine();
+			everythirdLine();
 		}
 		printStars();
 	}
@@ -30,14 +32,14 @@ class Drawing {
 
 	private void everySecondLine() {
 		maxSizeOfStarsInLine++;
-		everyThirdLine();
+		everythirdLine();
 		for (int unevenLine = 1; unevenLine < maxSizeOfStarsInLine / 2 + 1; unevenLine++) {
 			firstPart[unevenLine][maxSizeOfStarsInLine / 2] = ' ';
 		}
 
 	}
 
-	private void everyThirdLine() {
+	private void everythirdLine() {
 		firstPart = new char[maxSizeOfStarsInLine / 2 + 1][maxSizeOfStarsInLine];
 		int newStar = maxSizeOfStarsInLine / 2;
 		int numberOfStars = 1;

@@ -1,8 +1,10 @@
-public class Calculating {
+package unitOmega13;
 
-	long exponentiation(int number, int power) {
+class Calculating {
+
+	long exponentiation(int number, int degree) {
 		int result = 1;
-		for (int originalNumber = 0; originalNumber < power; originalNumber++) {
+		for (int originalNumber = 0; originalNumber < degree; originalNumber++) {
 			result *= number;
 		}
 		return result;
