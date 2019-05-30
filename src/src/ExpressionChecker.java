@@ -1,6 +1,6 @@
-class ExpressionChecker {
+public class ExpressionChecker {
 
-	boolean check(double value1, double value2, double value3){
-		return value1 + value2 == value3;
+	public boolean check(double value1, double value2, double value3) {
+		return Math.abs((value1 + value2) - value3) < 1E-4;
 	}
 }

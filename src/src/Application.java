@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
-public class Main {
+public class Application {
 
 	public static void main(String[] args) {
 		int choice;
 		int numberOfYears;
 		int numberForBitChanger, indexOfBit;
-		String gameValue1, gameValue2, gameValue3, gameValue4;
 		double expressionNumber1, expressionNumber2, expressionNumber3;
 		Game trueFalseGame = new Game();
 		ExpressionChecker expressionChecker = new ExpressionChecker();
@@ -27,10 +26,10 @@ public class Main {
 			switch (choice) {
 				case 1:
 					System.out.println("Please put 4 values for game (true or false)");
-					gameValue1 = scanner.next();
-					gameValue2 = scanner.next();
-					gameValue3 = scanner.next();
-					gameValue4 = scanner.next();
+					boolean gameValue1 = Boolean.parseBoolean(scanner.next());
+					boolean gameValue2 = Boolean.parseBoolean(scanner.next());
+					boolean gameValue3 = Boolean.parseBoolean(scanner.next());
+					boolean gameValue4 = Boolean.parseBoolean(scanner.next());
 					System.out.println(trueFalseGame.gameStart(gameValue1, gameValue2, gameValue3, gameValue4));
 					break;
 				case 2:

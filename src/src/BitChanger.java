@@ -1,6 +1,6 @@
-class BitChanger {
+public class BitChanger {
 
-	int changeBit(int number, int bitIndex) {
+	public int changeBit(int number, int bitIndex) {
 		return number ^ (1 << bitIndex - 1);
 	}
 }

@@ -1,4 +1,4 @@
-class Leap_year_task {
+public class Leap_year_task {
 
 	public int numberOfLeepYears(int value) {
 		int numberOfEvery4year = value / 4;
