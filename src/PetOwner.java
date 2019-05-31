@@ -7,6 +7,8 @@ public class PetOwner {
 	private String typeOfPet;
 	private String genderOfPet;
 
+	private PetOwner(){	}
+
 	public static class Builder {
 		private PetOwner newPetOwner;
 
