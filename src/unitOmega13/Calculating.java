@@ -1,5 +1,3 @@
-package unitOmega13;
-
 class Calculating {
 
 	long exponentiation(int number, int degree) {

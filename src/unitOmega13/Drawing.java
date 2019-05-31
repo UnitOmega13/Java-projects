@@ -1,5 +1,3 @@
-package unitOmega13;
-
 class Drawing {
 	private char[][] firstPart;
 	private int maxSizeOfStarsInLine;
