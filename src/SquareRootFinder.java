@@ -1,10 +1,9 @@
 public class SquareRootFinder {
-	public double findSquareRoot(double findSqrtNumber) {
-		if(findSqrtNumber >= 0) {
-			double number = Math.sqrt(findSqrtNumber);
-		}else{
-			System.out.println("Sorry, the number is negative");
+	public double sqrt(double x) {
+		if (x < 0) {
+			throw new IllegalArgumentException("Expected number, bigger than 0");
+		}else {
+			return Math.sqrt(x);
 		}
-		return number;
 	}
 }
