@@ -1,6 +1,6 @@
 public class BitChanger {
 
-	public int changeBit(int number, int bitIndex) {
-		return number ^ (1 << bitIndex - 1);
+	public int public static int flipBit(int value, int bitIndex) {
+		return value ^ (1 << bitIndex - 1);
 	}
 }
