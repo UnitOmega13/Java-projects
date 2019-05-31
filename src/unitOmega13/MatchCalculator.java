@@ -12,9 +12,9 @@ class MatchCalculator {
 		differenceGoals = firstTeamGoal - secondTeamGoal;
 		differencePlayerGoals = gamerFirstResult - gamerSecondResult;
 		return (firstTeamGoal == gamerFirstResult && secondTeamGoal == gamerSecondResult) ? 2 :
-				(differenceGoals > 0 && differencePlayerGoals > 0 )||
-						(differenceGoals < 0 && differencePlayerGoals < 0 ) ||
-						(differenceGoals == 0 && differencePlayerGoals == 0 ) ? 1 : 0;
+				(differenceGoals > 0 && differencePlayerGoals > 0) ||
+						(differenceGoals < 0 && differencePlayerGoals < 0) ||
+						(differenceGoals == 0 && differencePlayerGoals == 0) ? 1 : 0;
 		System.out.println(resultOfGame);
 	}
 }
