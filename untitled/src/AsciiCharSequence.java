@@ -1,3 +1,7 @@
+package src;
+
+import java.util.Arrays;
+
 public class AsciiCharSequence implements CharSequence {
 	private byte[] stringReplace;
 
@@ -18,16 +22,18 @@ public class AsciiCharSequence implements CharSequence {
 	@Override
 	public CharSequence subSequence(int start, int end) {
 		byte[] result = new byte[end - start];
-		if (end - start >= 0) {
+		if (end - start > 0) {
 			System.arraycopy(stringReplace, start, result, start - start, end - start);
 		}
 		return new AsciiCharSequence(result);
 	}
 
 	@Override
-	public java.lang.String toString() {
-		return "AsciiCharSequence{" +
-				"stringReplace=" + java.util.Arrays.toString(stringReplace) +
-				'}';
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int index = 0; index < stringReplace.length; index++) {
+			stringBuilder.append((char) stringReplace[index]);
+		}
+		return stringBuilder.toString();
 	}
 }

@@ -1,6 +1,8 @@
+package src;
+
 class ArraySorter {
 
-	void arraySorter(int[] a1, int[] a2) {
+	int[] arraySorter(int[] a1, int[] a2) {
 		int[] complitedArray = new int[a1.length + a2.length];
 		int indexForFirstArray = 0;
 		int indexForSecondArray = 0;

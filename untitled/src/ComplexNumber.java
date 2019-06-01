@@ -1,3 +1,5 @@
+package src;
+
 public class ComplexNumber {
 
 	private final double re;

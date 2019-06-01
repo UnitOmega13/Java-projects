@@ -1,11 +1,15 @@
+package src;
+
+import java.math.BigInteger;
+
 class Factorial {
 
-	void factorialFinder(int number) {
-		int result = 1;
-		for (int i = number; i >= 1; i--) {
-			result = result * i;
+	public static BigInteger factorial(int value) {
+		BigInteger result = BigInteger.valueOf(1);
+		for (int i = value; i >= 1; i--) {
+			result = result.multiply(BigInteger.valueOf(i));
 		}
-		System.out.println(result);
-
+		return result;
 	}
 }
+

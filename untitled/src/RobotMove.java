@@ -1,13 +1,8 @@
+package src;
+
 class RobotMove {
 
-		public enum Direction {
-			UP,
-			DOWN,
-			LEFT,
-			RIGHT
-		}
-
-		public static void moveRobot (Robot robot,int toX, int toY){
+		public static void moveRobot (Robot robot, int toX, int toY){
 			int getX = robot.getX();
 			int getY = robot.getY();
 

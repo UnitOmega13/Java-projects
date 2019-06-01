@@ -1,6 +1,8 @@
-public static class Robot {
-	int x;
-	int y;
+package src;
+
+public class Robot {
+	private int x;
+	private int y;
 	Direction direction;
 
 	public Robot(int x, int y, Direction direction) {
@@ -22,25 +24,25 @@ public static class Robot {
 	}
 
 	public void turnToLeft() {
-		if (dir == Direction.UP) {
+		if (direction == Direction.UP) {
 			direction = Direction.LEFT;
-		} else if (dir == Direction.DOWN) {
+		} else if (direction == Direction.DOWN) {
 			direction = Direction.RIGHT;
-		} else if (dir == Direction.LEFT) {
+		} else if (direction == Direction.LEFT) {
 			direction = Direction.DOWN;
-		} else if (dir == Direction.RIGHT) {
+		} else if (direction == Direction.RIGHT) {
 			direction = Direction.UP;
 		}
 	}
 
 	public void turnToRight() {
-		if (ddirectionir == Direction.UP) {
+		if (direction == Direction.UP) {
 			direction = Direction.RIGHT;
-		} else if (dir == Direction.DOWN) {
+		} else if (direction == Direction.DOWN) {
 			direction = Direction.LEFT;
-		} else if (dir == Direction.LEFT) {
+		} else if (direction == Direction.LEFT) {
 			direction = Direction.UP;
-		} else if (dir == Direction.RIGHT) {
+		} else if (direction == Direction.RIGHT) {
 			direction = Direction.DOWN;
 		}
 	}

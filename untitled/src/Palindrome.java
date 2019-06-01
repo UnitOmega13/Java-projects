@@ -1,11 +1,10 @@
+package src;
+
 class Palindrome {
-	public boolean isPalindrome(String stringForCheck) {
+	public boolean isPalindrome(String text) {
 		String regex = "[^A-Za-z0-9]";
-		String cleanString = stringForCheck.replaceAll(regex, "");
+		String cleanString = text.replaceAll(regex, "");
 		String revertString = new StringBuilder(cleanString).reverse().toString();
-		if (revertString.equalsIgnoreCase(cleanString)) {
-			return true;
-		}
-		return false;
+		return revertString.equalsIgnoreCase(cleanString);
 	}
 }
