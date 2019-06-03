@@ -8,12 +8,15 @@ class ArraySorter {
 		int indexForSecondArray = 0;
 		int indexForThirdArray = 0;
 		while (indexForFirstArray < a1.length && indexForSecondArray < a2.length) {
-			complitedArray[indexForThirdArray++] = a1[indexForFirstArray] < a2[indexForSecondArray] ? a1[indexForFirstArray++] : a2[indexForSecondArray++];
+			complitedArray[indexForThirdArray++] = a1[indexForFirstArray] < a2[indexForSecondArray] ?
+					a1[indexForFirstArray++] : a2[indexForSecondArray++];
 		}
 		if (indexForFirstArray < a1.length) {
-			System.arraycopy(a1, indexForFirstArray, complitedArray, indexForThirdArray, a1.length - indexForFirstArray);
+			System.arraycopy(a1, indexForFirstArray, complitedArray,
+					indexForThirdArray, a1.length - indexForFirstArray);
 		} else if (indexForSecondArray < a2.length) {
-			System.arraycopy(a2, indexForSecondArray, complitedArray, indexForThirdArray, a2.length - indexForSecondArray);
+			System.arraycopy(a2, indexForSecondArray, complitedArray,
+					indexForThirdArray, a2.length - indexForSecondArray);
 		}
 		return complitedArray;
 	}
