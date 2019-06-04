@@ -7,7 +7,7 @@ import com.sun.xml.internal.ws.developer.SerializationFeature;
 public class CloneCarTest implements Cloneable {
 	private String name;
 	private String color;
-	private int maxSpeed;
+	private Integer maxSpeed;
 	private int capacity;
 
 	public CloneCarTest(String name, String color, int maxSpeed, int capacity) {
