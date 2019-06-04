@@ -4,6 +4,7 @@ public class RobotMove {
 		for (int connections = 0; connections < 3; connections++) {
 			try (RobotConnection robotConnection = robotConnectionManager.getConnection()) {
 				robotConnection.moveRobotTo(toX, toY);
+				connections = 3;
 			} catch (RobotConnectionException e) {
 				if (connections == 2) {
 					throw e;
