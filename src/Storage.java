@@ -1,16 +1,17 @@
-import com.sun.istack.internal.Nullable;
+import java.util.ArrayList;
 
-import java.util.HashMap;
+class Storage{
+	private ArrayList<Integer> listOfKeys = new ArrayList<>();
+	private ArrayList<Object> listOfValues = new ArrayList<>();
 
-public class Storage<T, K> extends HashMap{
-
-	@Override
-	public Object get(Object key) {
-		return super.get(key);
+	Object get(int key) {
+		return listOfValues.get(key - 1);
 	}
 
-	@Override
-	public Object put(Object key, Object value) {
-		return super.put(key, value);
+
+	void put(int key, Object value) {
+		listOfKeys.add(key);
+		listOfValues.add(value);
+
 	}
 }
