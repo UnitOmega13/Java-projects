@@ -33,6 +33,19 @@ public class Pair<T, K> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getFirst(), getSecond());
+		int hashPartFirst;
+		int hashPartSecond;
+		int result;
+		if (this.getFirst() != null & this.getSecond() != null) {
+			if (getFirst() instanceof Integer) {
+				hashPartFirst = (Integer) getFirst();
+			} else {
+				hashPartFirst = getFirst().toString().length();
+			}
+			hashPartSecond = getSecond().toString().length();
+			result = (hashPartFirst * 32) + 31 * (hashPartSecond * 11);
+			return result;
+		}
+		return 0;
 	}
 }
