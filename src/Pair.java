@@ -27,8 +27,8 @@ public class Pair<T, K> {
 		if (this == object) return true;
 		if (object == null || getClass() != object.getClass()) return false;
 		Pair<?, ?> pair = (Pair<?, ?>) object;
-		return Objects.equals(getFirst(), pair.getFirst()) &&
-				Objects.equals(getSecond(), pair.getSecond());
+		if (getFirst() != null ? !getFirst().equals(pair.getFirst()) : pair.getFirst() != null) return false;
+		return getSecond() != null ? getSecond().equals(pair.getSecond()) : pair.getSecond() == null;
 	}
 
 	@Override
