@@ -1,11 +1,11 @@
 public class Items {
 	private String name;
-	private String subName;
+	private String nickName;
 	private int age;
 
 	Items(String name, String subName, int age) {
 		this.name = name;
-		this.subName = subName;
+		this.nickName = subName;
 		this.age = age;
 	}
 
@@ -18,11 +18,11 @@ public class Items {
 	}
 
 	public String getSubName() {
-		return subName;
+		return nickName;
 	}
 
 	public void setSubName(String subName) {
-		this.subName = subName;
+		this.nickName = subName;
 	}
 
 	public int getAge() {
@@ -37,7 +37,7 @@ public class Items {
 	public String toString() {
 		return "Items{" +
 				"name='" + name + '\'' +
-				", subName='" + subName + '\'' +
+				", subName='" + nickName + '\'' +
 				", age=" + age +
 				'}';
 	}
