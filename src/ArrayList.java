@@ -3,12 +3,12 @@ import java.util.List;
 import java.util.Objects;
 
 class ArrayList<T> implements ListForTask<T> {
-	private static final int INIT_CAPACITY = 10;
+	private static final int CAPACITY_OF_ARRAY = 10;
 	public T[] newOwnArray;
 	private int arraySize;
 
 	public ArrayList() {
-		this.newOwnArray = (T[]) new Object[INIT_CAPACITY];
+		this.newOwnArray = (T[]) new Object[CAPACITY_OF_ARRAY];
 	}
 
 	@Override
