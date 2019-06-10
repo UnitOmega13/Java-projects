@@ -16,8 +16,7 @@ class ArrayList<T> implements ListForTask<T> {
 		if (arraySize >= newOwnArray.length - 1) {
 			newOwnArray = Arrays.copyOf(newOwnArray, newOwnArray.length + (newOwnArray.length >> 1));
 		}
-		newOwnArray[arraySize] = value;
-		arraySize++;
+		newOwnArray[arraySize++] = value;
 	}
 
 	@Override
