@@ -1,17 +1,17 @@
-public class NewNode<T> {
-	public NewNode<T> previous;
-	public NewNode<T> next;
-	public T value;
+class NewNode<T> {
+	NewNode<T> previous;
+	NewNode<T> next;
+	T value;
 
-	public NewNode(T value) {
+	NewNode(T value) {
 		this.value = value;
 	}
 
-	public void setPrevious(NewNode previous) {
+	void setPrevious(NewNode previous) {
 		this.previous = previous;
 	}
 
-	public void setNext(NewNode next) {
+	void setNext(NewNode next) {
 		this.next = next;
 	}
 }

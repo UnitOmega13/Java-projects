@@ -28,7 +28,7 @@ public class NewLinkedList<T> implements List<T> {
 		} else if (index == length) {
 			add(newNode.value);
 		} else {
-			NewNode<T> prevNewNode = getNode(index);
+			NewNode<T> prevNewNode = getNode(index - 1);
 			prevNewNode.next.setPrevious(newNode);
 			newNode.next = prevNewNode.next;
 			newNode.previous = prevNewNode;
@@ -44,14 +44,9 @@ public class NewLinkedList<T> implements List<T> {
 		}
 	}
 
-	public void addAll(NewLinkedList<T> newLinkedList) {
-		lastNewNode.setNext(newLinkedList.firstNewNode);
-		newLinkedList.firstNewNode.setPrevious(this.lastNewNode);
-		length = length + newLinkedList.size();
-	}
-
 	@Override
 	public T get(int index) {
+		validIndex(index);
 		return getNode(index).value;
 	}
 
@@ -81,16 +76,16 @@ public class NewLinkedList<T> implements List<T> {
 	}
 
 	@Override
-	public T remove(T o) {
+	public T remove(T object) {
 		NewNode<T> newNode = firstNewNode;
-		if (o.equals(firstNewNode.value)) {
+		if (object.equals(firstNewNode.value)) {
 			return removeFirst();
 		}
-		if (o.equals(lastNewNode.value)) {
+		if (object.equals(lastNewNode.value)) {
 			return removeLast();
 		}
 		while (newNode != lastNewNode) {
-			if (newNode.value == o) {
+			if (newNode.value == object) {
 				newNode.previous.setNext(newNode.next);
 				newNode.next.setPrevious(newNode.previous);
 				length--;
@@ -113,11 +108,12 @@ public class NewLinkedList<T> implements List<T> {
 
 	private void validIndex(int index) {
 		if (index < 0 || index > length - 1) {
-			throw new IndexOutOfBoundsException(index + "is not valid index");
+			throw new IndexOutOfBoundsException(index + " is not valid index");
 		}
 	}
 
 	private NewNode<T> getNode(int index) {
+		validIndex(index);
 		NewNode<T> newNode = firstNewNode;
 		for (int i = 0; i < index; i++) {
 			newNode = newNode.next;
