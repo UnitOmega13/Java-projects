@@ -1,14 +1,21 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class Aplication {
 
 	public static void main(String[] args) {
-		List l = new NewLinkedList<>();
-		l.add("1");
-		l.add("2");
-		l.add("3");
-		l.add("2+", 2);
-		System.out.println(l);
+		List list = new NewLinkedList<>();
+		list.add("1");
+		list.add("2");
+		list.add("3");
+		list.add("2+", 2);
+		System.out.println(list);
+
+		System.out.println(list.get(2));
+		System.out.println(list.isEmpty());
+		System.out.println(list.remove(1));
+		System.out.println(list);
+		System.out.println(list.size());
+		list.set("2", 1);
+		System.out.println(list);
+		list.remove("3");
+		System.out.println(list);
 	}
 }
