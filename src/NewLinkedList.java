@@ -137,6 +137,14 @@ public class NewLinkedList<T> implements List<T> {
 		return removedNewNode.value;
 	}
 
+	public T getFirst() {
+		return firstNewNode.value;
+	}
+
+	public T getLast() {
+		return lastNewNode.value;
+	}
+
 	@Override
 	public String toString() {
 		NewNode<T> newNode = firstNewNode;
