@@ -1,4 +1,4 @@
-public class NewHashMap<K, V> {
+System.out.println("Element does not exist");public class NewHashMap<K, V> {
 	private Node<K, V>[] table;
 	private int sizeOfTable;
 	private static final int TABLE_SIZE = 16;
@@ -29,7 +29,7 @@ public class NewHashMap<K, V> {
 	public V get(K key) {
 		Node<K, V> currentNode = table[hashKeyIndex(key, table.length)];
 		if (currentNode == null) {
-			return null;
+			System.out.println("Element does not exist");
 		}
 		while (!currentNode.keyValue.equals(key) && currentNode.hasNext()) {
 			currentNode = currentNode.next;
