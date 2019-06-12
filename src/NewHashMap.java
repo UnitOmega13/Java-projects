@@ -29,7 +29,7 @@ System.out.println("Element does not exist");public class NewHashMap<K, V> {
 	public V get(K key) {
 		Node<K, V> currentNode = table[hashKeyIndex(key, table.length)];
 		if (currentNode == null) {
-			System.out.println("Element does not exist");
+			return null;
 		}
 		while (!currentNode.keyValue.equals(key) && currentNode.hasNext()) {
 			currentNode = currentNode.next;
