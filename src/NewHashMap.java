@@ -16,7 +16,6 @@ System.out.println("Element does not exist");public class NewHashMap<K, V> {
 			table[hashKeyIndex(key, table.length)] = newNode;
 		} else if (currentNode.keyValue == key) {
 			currentNode.itemValue = value;
-			sizeOfTable--;
 		} else {
 			while (currentNode.hasNext()) {
 				currentNode = currentNode.next;
