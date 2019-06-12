@@ -18,7 +18,6 @@ public class Aplication {
 		System.out.println(list.size());
 		list.set("2", 1);
 		System.out.println(list);
-		list.remove("3");
-		System.out.println(list);
+		System.out.println("Item "+ list.remove("3") + " successfully removed");
 	}
 }

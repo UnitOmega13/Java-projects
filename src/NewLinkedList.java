@@ -93,7 +93,7 @@ public class NewLinkedList<T> implements List<T> {
 			}
 			newNode = newNode.next;
 		}
-		return null;
+		return newNode.value;
 	}
 
 	@Override
