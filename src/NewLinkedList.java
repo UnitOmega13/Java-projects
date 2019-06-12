@@ -137,14 +137,6 @@ public class NewLinkedList<T> implements List<T> {
 		return removedNewNode.value;
 	}
 
-	public T getFirst() {
-		return firstNewNode.value;
-	}
-
-	public T getLast() {
-		return lastNewNode.value;
-	}
-
 	@Override
 	public String toString() {
 		NewNode<T> newNode = firstNewNode;
@@ -155,5 +147,23 @@ public class NewLinkedList<T> implements List<T> {
 		}
 		stringBuilder.append("}");
 		return stringBuilder.toString();
+	}
+
+	private class NewNode<T> {
+		NewNode<T> previous;
+		NewNode<T> next;
+		T value;
+
+		NewNode(T value) {
+			this.value = value;
+		}
+
+		void setPrevious(NewNode previous) {
+			this.previous = previous;
+		}
+
+		void setNext(NewNode next) {
+			this.next = next;
+		}
 	}
 }
