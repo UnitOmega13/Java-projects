@@ -1,8 +1,10 @@
 public class Aplication {
 
 	public static void main(String[] args) {
-		Storage newStorageItem = new Storage();
-		newStorageItem.put(1,new Items("Max","Hruslov",25));
-		System.out.println(newStorageItem.get(1));
+		NewHashMap<Integer, Items> newHashMap = new NewHashMap<>();
+		newHashMap.put(1, new Items("Square", "Green", 3));
+		newHashMap.put(2, new Items("Scope", "Red", 9));
+		newHashMap.put(3, new Items("Triangle", "Blue", 5));
+		System.out.println(newHashMap.get(3));
 	}
 }
