@@ -1,7 +1,10 @@
+import src.Owner;
+import src.SquareRootFinder;
+
 public class Aplication {
 	public static void main(String[] args) {
 		SquareRootFinder squareRootFinder = new SquareRootFinder();
-		PetOwner newPetOwner = new PetOwner.Builder()
+		Owner newPetOwner = new Owner.Builder()
 				.withName("Maxim")
 				.withSurname("Hruslov")
 				.petAge(1)
@@ -11,6 +14,6 @@ public class Aplication {
 				.petType("cat")
 				.build();
 		System.out.println(newPetOwner.toString());
-		System.out.println(squareRootFinder.findSquareRoot(144));
+		System.out.println(squareRootFinder.sqrt(144));
 	}
 }

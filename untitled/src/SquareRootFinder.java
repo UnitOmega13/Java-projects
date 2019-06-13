@@ -1,3 +1,5 @@
+package src;
+
 public class SquareRootFinder {
 	public double sqrt(double x) {
 		if (x < 0) {
