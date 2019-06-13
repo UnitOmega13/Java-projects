@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class NewHashMap<K, V> {
 	private Node<K, V>[] table;
 	private int sizeOfTable;
