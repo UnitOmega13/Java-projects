@@ -46,10 +46,9 @@ public class NewHashMap<K, V> {
 	}
 
 	private int hashKeyIndex(K key, int tableLength) {
-		return ((tableLength - 1) & key.hashCode());
+		return (tableLength - 1) & key.hashCode();
 	}
-
-	private static class Node<K, V> {
+	private class Node<K, V> {
 		K keyValue;
 		V itemValue;
 		Node<K, V> next;
