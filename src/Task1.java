@@ -11,10 +11,9 @@ public class Task1 {
 
 	public static String getCallerClassAndMethodName() {
 		StackTraceElement[] stackTraceElement = new Exception().getStackTrace();
-		if (stackTraceElement.length < 3) {
-			return null;
-		} else {
+		if (stackTraceElement.length >= 3) {
 			return stackTraceElement[2].getClassName() + "#" + stackTraceElement[2].getMethodName();
 		}
+			return null;
 	}
 }
