@@ -1,10 +1,15 @@
+import java.util.function.DoubleUnaryOperator;
+
 public class Task2 {
-	public static <T> Set<T> symmetricDifference(Set<? extends T> set1, Set<? extends T> set2) {
-		Set<T> symmetricDifference = new HashSet<T>(set1);
-		Set<T> tempSymetricalDifference = new HashSet<T>(set1);
-		symmetricDifference.addAll(set2);
-		tempSymetricalDifference.retainAll(set2);
-		symmetricDifference.removeAll(tempSymetricalDifference);
-		return symmetricDifference;
+	public static double integrate(DoubleUnaryOperator f, double a, double b) {
+		int n = 10000000;
+		double dx = (b - a) * 1.0 / n;
+		double integral = 0;
+		double  x;
+		for(int number = 0; number < n ; number++){
+			x = a + number * dx;
+			integral += f.applyAsDouble(x)*dx;
+		}
+		return integral;
 	}
 }

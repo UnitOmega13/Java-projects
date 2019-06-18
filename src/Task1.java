@@ -1,19 +1,37 @@
+import java.util.function.IntSupplier;
+import java.util.stream.IntStream;
+
 public class Task1 {
 
-	public static void main(String[] args) {
-		System.out.println(getCallerClassAndMethodName());
-		anotherMethod();
-	}
+	public static IntStream pseudoRandomStream(int seed) {
+		IntSupplier generator = new IntSupplier() {
+			int current = 0;
 
-	private static void anotherMethod() {
-		System.out.println(getCallerClassAndMethodName());
-	}
+			int mid(int index) {
+				if (index == 0) return seed;
+				int midElement = mid(index - 1);
+				midElement *= midElement;
+				int result = 0;
+				int count = 0;
+				int res;
+				while (midElement > 0) {
+					res = midElement % 10;
+					count++;
+					if (count >= 2 && count <= 4) result += res * Math.pow(10, count - 2);
+					midElement /= 10;
+				}
 
-	public static String getCallerClassAndMethodName() {
-		StackTraceElement[] stackTraceElement = new Exception().getStackTrace();
-		if (stackTraceElement.length >= 3) {
-			return stackTraceElement[2].getClassName() + "#" + stackTraceElement[2].getMethodName();
-		}
-		return null;
+				return result;
+			}
+
+			public int getAsInt() {
+				return mid(current++);
+			}
+		};
+
+		IntStream natural = IntStream.generate(generator);
+
+		return natural;
 	}
 }
+
