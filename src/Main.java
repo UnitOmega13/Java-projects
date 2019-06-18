@@ -21,7 +21,6 @@ public class Main {
 			stringBuilder.append(numbers.getLast()).append(" ");
 			numbers.removeLast();
 		}
-		outputNumbers = stringBuilder.toString();
-		System.out.print(outputNumbers);
+		System.out.print(stringBuilder.toString());
 	}
 }
