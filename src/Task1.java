@@ -14,6 +14,6 @@ public class Task1 {
 		if (stackTraceElement.length >= 3) {
 			return stackTraceElement[2].getClassName() + "#" + stackTraceElement[2].getMethodName();
 		}
-			return null;
+		return null;
 	}
 }
