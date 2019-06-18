@@ -6,7 +6,6 @@ public class Main {
 	public static void main(String[] args) {
 		int index = 0;
 		StringBuilder stringBuilder = new StringBuilder();
-		String outputNumbers;
 		Scanner scanner = new Scanner(System.in);
 		ArrayDeque<Integer> numbers = new ArrayDeque<>();
 		while (scanner.hasNextInt()) {
