@@ -6,6 +6,6 @@ public class ConditionChecker {
 			Predicate<? super T> condition,
 			Function<? super T, ? extends U> ifTrue,
 			Function<? super T, ? extends U> ifFalse) {
-		return t -> condition.test(t) ? ifTrue.apply(t) : ifFalse.apply(t);
+		return test -> condition.test(test) ? ifTrue.apply(test) : ifFalse.apply(test);
 	}
 }
