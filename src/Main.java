@@ -1,25 +1,46 @@
-import java.util.ArrayDeque;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
-	public static void main(String[] args) {
-		int index = 0;
-		StringBuilder stringBuilder = new StringBuilder();
+	public static void main(String[] args) throws Exception {
+		StringBuilder builder = new StringBuilder();
 		Scanner scanner = new Scanner(System.in);
-		ArrayDeque<Integer> numbers = new ArrayDeque<>();
-		while (scanner.hasNextInt()) {
-			if (index % 2 == 0) {
-				scanner.nextInt();
+		while (scanner.hasNextLine()) {
+			builder.append(scanner.nextLine());
+			builder.append(" ");
+		}
+		String text = builder.toString().replaceAll("[^a-zA-Zа-яА-Я0-9]", " ");
+		Map<String, Integer> wordsByNumber = new HashMap<>();
+		scanner = new Scanner(text);
+		while (scanner.hasNext()) {
+			String word = scanner.next().toLowerCase();
+			if (wordsByNumber.containsKey(word)) {
+				wordsByNumber.put(word, wordsByNumber.get(word) + 1);
 			} else {
-				numbers.add(scanner.nextInt());
+				wordsByNumber.put(word, 1);
 			}
-			index++;
 		}
-		for (index = 0; index < numbers.size(); ) {
-			stringBuilder.append(numbers.getLast()).append(" ");
-			numbers.removeLast();
+		Map<Integer, List<String>> numberByWords = new HashMap<>();
+		for (Map.Entry<String, Integer> entry : wordsByNumber.entrySet()) {
+			String word = entry.getKey();
+			Integer number = entry.getValue();
+			if (!numberByWords.containsKey(number)) {
+				numberByWords.put(number, new ArrayList<>());
+			}
+			numberByWords.get(number).add(word);
 		}
-		System.out.print(stringBuilder.toString());
+		List<String> allWords = new ArrayList<>();
+		numberByWords.keySet().stream()
+				.sorted(Comparator.reverseOrder())
+				.forEach(key -> {
+					List<String> words = numberByWords.get(key);
+					words.stream().sorted().forEach(value -> {
+						if (allWords.size() >= 10) {
+							return;
+						}
+						allWords.add(value);
+					});
+				});
+		allWords.forEach(System.out::println);
 	}
 }
