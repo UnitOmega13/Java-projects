@@ -25,6 +25,5 @@ public class Main {
         PlayerConsoleHandler.playerHandle();
         PlayerDao playerDao = new PlayerDaoImpl();
         System.out.println(playerDao.getAll());
-
     }
 }
