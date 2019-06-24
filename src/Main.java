@@ -20,7 +20,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) throws Exception {
         System.out.println("Please input player name and surname:");
         PlayerConsoleHandler.playerHandle();
@@ -28,10 +27,4 @@ public class Main {
         System.out.println(playerDao.getAll());
 
     }
-
-
 }
-
-
-
-
