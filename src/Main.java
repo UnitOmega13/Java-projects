@@ -1,11 +1,10 @@
-import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		Scanner scanner = new Scanner(System.in);
 		String text = scanner.nextLine();
 		Stream.of(text.toLowerCase().split("[\\p{Punct}\\s]+"))
