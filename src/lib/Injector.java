@@ -33,10 +33,7 @@ public class Injector {
         for (Field field : playerConsoleHandler) {
             if (field.getDeclaredAnnotation(Inject.class) != null) {
                 field.setAccessible(true);
-                if (field.getType().equals(betDaoClass) && betDaoImplClass.getAnnotation(Dao.class) != null) {
-                    field.set(null, BetDaoFactory.getBetDao());
-                }
-                if (field.getType().equals(playerDaoClass) && playerDaoClass.getAnnotation(Dao.class) != null) {
+                if (field.getType().equals(playerDaoClass) && playerDaoImpClass.getAnnotation(Dao.class) != null) {
                     field.set(null, PlayerDaoFactory.getPlayerDao());
                 }
             }

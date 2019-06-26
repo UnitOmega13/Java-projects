@@ -1,6 +1,10 @@
 package model;
 
-public class Player {
+import sun.plugin2.message.Serializer;
+
+import java.io.Serializable;
+
+public class Player implements Serializable {
 	private String name;
 	private String surName;
 

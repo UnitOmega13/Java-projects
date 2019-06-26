@@ -1,5 +1,6 @@
 package dao;
 
+import lib.Dao;
 import model.Player;
 
 import java.util.List;
