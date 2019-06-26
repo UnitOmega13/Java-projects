@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerStorage {
-	public static final List<Player> playerList = new ArrayList<>();
+	public static final List<Player> PLAYERS = new ArrayList<>();
 }

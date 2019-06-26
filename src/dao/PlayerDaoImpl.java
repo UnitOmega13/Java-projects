@@ -10,11 +10,11 @@ public class PlayerDaoImpl implements PlayerDao{
 
 	@Override
 	public void add(Player player) {
-		PlayerStorage.playerList.add(player);
+		PlayerStorage.PLAYERS.add(player);
 	}
 
 	@Override
 	public List<Player> getAll() {
-		return PlayerStorage.playerList;
+		return PlayerStorage.PLAYERS;
 	}
 }
