@@ -5,21 +5,19 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class MailService<T> implements Consumer<Sendable<T>> {
-	private final Map<String, List<T>> msMailBox;
+	private Map<String, List<T>> msMailBox;
 
 	public MailService() {
 		msMailBox = new HashMap<String, List<T>>() {
 			@Override
 			@SuppressWarnings("empty-statement")
 			public List<T> get(Object key) {
-				if (msMailBox.containsKey(key)) {
-					return msMailBox.getOrDefault(key, null);
-				} else {
+				if (!msMailBox.containsKey(key)) {
 					List<T> lst = new LinkedList<>();
 					msMailBox.put((String) key, lst);
 					return lst;
-
 				}
+				return msMailBox.getOrDefault(key, null);
 			}
 		};
 	}

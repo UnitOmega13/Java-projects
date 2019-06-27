@@ -1,21 +1,26 @@
 public class Salary implements Sendable<Integer> {
-	private String sJob;
-	private String sName;
-	private Integer iSalary;
+	private String job;
+	private String name;
+	private Integer salary;
 
-	public Salary(String Job, String Name, Integer Salary) {
-		sJob = Job;
-		sName = Name;
-		iSalary = Salary;
+	public Salary(String job, String name, Integer salary) {
+		job = job;
+		name = name;
+		salary = salary;
 	}
 
 	@Override
 	public String getTo() {
-		return sName;
+		return name;
+	}
+
+	@Override
+	public String getFrom() {
+		return job;
 	}
 
 	@Override
 	public Integer getContent() {
-		return iSalary;
+		return salary;
 	}
 }

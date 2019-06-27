@@ -1,25 +1,26 @@
 public class MailMessage implements Sendable<String> {
-	private String sFrom;
-	private String sTo;
-	private String sContent;
+	private String sender;
+	private String destination;
+	private String packageType;
 
+	@Override
 	public String getFrom() {
-		return sFrom;
+		return sender;
 	}
 
 	@Override
 	public String getTo() {
-		return sTo;
+		return destination;
 	}
 
 	@Override
 	public String getContent() {
-		return sContent;
+		return packageType;
 	}
 
-	public MailMessage(String From, String To, String Content) {
-		sFrom = From;
-		sTo = To;
-		sContent = Content;
+	public MailMessage(String sender, String destination, String packageType) {
+		this.sender = sender;
+		this.destination = destination;
+		this.packageType = packageType;
 	}
 }
