@@ -10,11 +10,10 @@ public class MinMaxFinder {
 			BiConsumer<? super T, ? super T> minMaxConsumer) {
 
 		LinkedList<T> sortedList = new LinkedList<>();
-		stream.sorted(order).forEach(sortedList::add);
 		if (sortedList.isEmpty()) {
 			minMaxConsumer.accept(null, null);
 		} else {
-			minMaxConsumer.accept(sortedList.getFirst(), sortedList.getLast());
+			minMaxConsumer.accept(sortedList.stream().min(order::compare).get(), sortedList.stream().max(order::compare).get());
 		}
 	}
 }
