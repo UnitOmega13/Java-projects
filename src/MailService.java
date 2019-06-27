@@ -5,30 +5,25 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class MailService<T> implements Consumer<Sendable<T>> {
-	private Map<String, List<T>> msMailBox;
+	private Map<String, List<T>> mailServiceMailBox;
 
 	public MailService() {
-		msMailBox = new HashMap<String, List<T>>() {
+		mailServiceMailBox = new HashMap<String, List<T>>() {
 			@Override
 			@SuppressWarnings("empty-statement")
 			public List<T> get(Object key) {
-				if (!msMailBox.containsKey(key)) {
-					List<T> lst = new LinkedList<>();
-					msMailBox.put((String) key, lst);
-					return lst;
-				}
-				return msMailBox.getOrDefault(key, null);
+				return mailServiceMailBox.put((String) key, new LinkedList<>());
 			}
 		};
 	}
 
 	public Map<String, List<T>> getMailBox() {
-		return msMailBox;
+		return mailServiceMailBox;
 	}
 
 	@Override
 	public void accept(Sendable<T> t) {
-		List lst = msMailBox.get(t.getTo());
+		List lst = mailServiceMailBox.get(t.getTo());
 		lst.add(t.getContent());
 	}
 }

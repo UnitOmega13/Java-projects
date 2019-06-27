@@ -3,6 +3,12 @@ public class MailMessage implements Sendable<String> {
 	private String destination;
 	private String packageType;
 
+	public MailMessage(String sender, String destination, String packageType) {
+		this.sender = sender;
+		this.destination = destination;
+		this.packageType = packageType;
+	}
+
 	@Override
 	public String getFrom() {
 		return sender;
@@ -16,11 +22,5 @@ public class MailMessage implements Sendable<String> {
 	@Override
 	public String getContent() {
 		return packageType;
-	}
-
-	public MailMessage(String sender, String destination, String packageType) {
-		this.sender = sender;
-		this.destination = destination;
-		this.packageType = packageType;
 	}
 }

@@ -4,9 +4,9 @@ public class Salary implements Sendable<Integer> {
 	private Integer salary;
 
 	public Salary(String job, String name, Integer salary) {
-		job = job;
-		name = name;
-		salary = salary;
+		this.job = job;
+		this.name = name;
+		this.salary = salary;
 	}
 
 	@Override
