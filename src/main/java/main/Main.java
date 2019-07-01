@@ -10,8 +10,8 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.SessionsServlet;
 import servlets.UsersServlet;
-import servletsForTask2.SignInServlet;
-import servletsForTask2.SignUpServlet;
+import servlets.SignInServlet;
+import servlets.SignUpServlet;
 
 /**
  * @author v.chibrikov
@@ -23,9 +23,6 @@ import servletsForTask2.SignUpServlet;
 public class Main {
 	public static void main(String[] args) throws Exception {
 		AccountService accountService = new AccountService();
-//		For Task 1
-//		AllRequestsServlet allRequestsServlet = new AllRequestsServlet();
-//		MirrorServlet mirrorServlet = new MirrorServlet();
 
 		accountService.addNewUser(new UserProfile("admin"));
 		accountService.addNewUser(new UserProfile("test"));
@@ -33,11 +30,8 @@ public class Main {
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
 		context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
-		context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
-		context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
-//		For Task 1
-//		context.addServlet(new ServletHolder(allRequestsServlet), "/*");
-//		context.addServlet(new ServletHolder(mirrorServlet), "/mirror");
+		context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/api/v1/signIN");
+		context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/api/v1/signUP");
 
 		ResourceHandler resource_handler = new ResourceHandler();
 		resource_handler.setResourceBase("public_html");

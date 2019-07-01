@@ -1,4 +1,4 @@
-package servletsForTask2;
+package servlets;
 
 import accounts.AccountService;
 import accounts.UserProfile;
@@ -18,11 +18,10 @@ public class SignUpServlet extends HttpServlet {
 		String login = servletRequest.getParameter("login");
 		servletResponse.setContentType("text/html;charset=utf-8");
 		if (login != null) {
-			accountService.addNewUser(new UserProfile(login,"", "unknown"));
+			accountService.addNewUser(new UserProfile(login, "", "unknown"));
 			servletResponse.setStatus(HttpServletResponse.SC_OK);
 		} else {
 			servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 		}
-
 	}
 }

@@ -1,4 +1,4 @@
-package servletsForTask2;
+package servlets;
 
 import accounts.AccountService;
 import accounts.UserProfile;
