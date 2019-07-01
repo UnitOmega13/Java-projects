@@ -16,10 +16,9 @@ public class SignUpServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
 		String login = servletRequest.getParameter("login");
-		String password = servletRequest.getParameter("password");
 		servletResponse.setContentType("text/html;charset=utf-8");
-		if (login != null && password != null) {
-			accountService.addNewUser(new UserProfile(login, password, "unknown"));
+		if (login != null) {
+			accountService.addNewUser(new UserProfile(login,"", "unknown"));
 			servletResponse.setStatus(HttpServletResponse.SC_OK);
 		} else {
 			servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);

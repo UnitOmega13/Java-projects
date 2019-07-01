@@ -17,11 +17,10 @@ public class SignInServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws IOException {
 		String login = servletRequest.getParameter("login");
-		String password = servletRequest.getParameter("password");
 		servletResponse.setContentType("text/html;charset=utf-8");
 		UserProfile userByLogin = accountService.getUserByLogin(login);
 		if (userByLogin != null) {
-			if (userByLogin.getLogin().equals(login) && userByLogin.getPass().equals(password)) {
+			if (userByLogin.getLogin().equals(login)) {
 				servletResponse.setStatus(HttpServletResponse.SC_OK);
 				servletResponse.getWriter().print("Authorized: " + login);
 			} else {
