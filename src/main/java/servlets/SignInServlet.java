@@ -15,7 +15,7 @@ public class SignInServlet extends HttpServlet {
 		this.accountService = accountService;
 	}
 	@Override
-	protected void doPost(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws IOException {
+	protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws IOException {
 		String login = servletRequest.getParameter("login");
 		servletResponse.setContentType("text/html;charset=utf-8");
 		UserProfile userByLogin = accountService.getUserByLogin(login);

@@ -14,11 +14,12 @@ public class SignUpServlet extends HttpServlet {
 		this.accountService = accountService;
 	}
 	@Override
-	protected void doPost(HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+	protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
 		String login = servletRequest.getParameter("login");
+		String password = servletRequest.getParameter("login");
 		servletResponse.setContentType("text/html;charset=utf-8");
 		if (login != null) {
-			accountService.addNewUser(new UserProfile(login, "", "unknown"));
+			accountService.addNewUser(new UserProfile(login, password, "unknown"));
 			servletResponse.setStatus(HttpServletResponse.SC_OK);
 		} else {
 			servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
