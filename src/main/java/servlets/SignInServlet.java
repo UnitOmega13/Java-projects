@@ -10,10 +10,12 @@ import java.io.IOException;
 
 public class SignInServlet extends HttpServlet {
 	private final AccountService accountService;
+
 	public SignInServlet(AccountService accountService) {
 		super();
 		this.accountService = accountService;
 	}
+
 	@Override
 	protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws IOException {
 		String login = servletRequest.getParameter("login");

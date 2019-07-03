@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SignUpServlet extends HttpServlet {
 	private final AccountService accountService;
+
 	public SignUpServlet(AccountService accountService) {
 		super();
 		this.accountService = accountService;
 	}
+
 	@Override
 	protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
 		String login = servletRequest.getParameter("login");

@@ -30,8 +30,8 @@ public class Main {
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
 		context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
-		context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/api/v1/signIN");
-		context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/api/v1/signUP");
+		context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signIN");
+		context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signUP");
 
 		ResourceHandler resource_handler = new ResourceHandler();
 		resource_handler.setResourceBase("public_html");
