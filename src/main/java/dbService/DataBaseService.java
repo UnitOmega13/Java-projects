@@ -23,7 +23,6 @@ import java.dbService.dataSets.UsersDataSet;
 public class DataBaseService {
     private static final String hibernate_show_sql = "true";
     private static final String hibernate_hbm2ddl_auto = "update"; // create
-
     private final SessionFactory sessionFactory;
 
     public DataBaseService() {
@@ -36,7 +35,6 @@ public class DataBaseService {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(UsersDataSet.class);
         configuration.addAnnotatedClass(User.class);
-
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
         configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/db_example");
@@ -51,7 +49,6 @@ public class DataBaseService {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(UsersDataSet.class);
         configuration.addAnnotatedClass(User.class);
-
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
         configuration.setProperty("hibernate.connection.url", "jdbc:h2:./h2db");
@@ -65,15 +62,12 @@ public class DataBaseService {
     public long addUser(String login, String password) throws DataBaseException {
         try {
             Session session = sessionFactory.openSession();
-
             Transaction transaction = session.beginTransaction();
             AccountDAO dao = new AccountDAO(session);
             long id = dao.addUser(login, password);
-
             transaction.commit();
             session.close();
             return id;
-
         } catch (HibernateException e) {
             throw new DataBaseException(e);
         }
@@ -82,13 +76,10 @@ public class DataBaseService {
     public User getUserByLogin(String login) throws DataBaseException {
         try {
             Session session = sessionFactory.openSession();
-
             AccountDAO dao = new AccountDAO(session);
             User user = dao.getUserByLogin(login);
-
             session.close();
             return user;
-
         } catch (HibernateException e) {
             throw new DataBaseException(e);
         }

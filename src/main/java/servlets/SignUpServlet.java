@@ -1,11 +1,10 @@
-package servlets;
-
-import dbService.AccountService;
+package java.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.dbService.AccountService;
 import java.io.IOException;
 
 public class SignUpServlet extends HttpServlet {

@@ -27,12 +27,10 @@ public class AccountDAO {
         } else {
             return null;
         }
-
     }
 
     @SuppressWarnings("UnusedDeclaration")
     public User getUserById(String id) {
         return (User)session.get(User.class, id);
     }
-
 }

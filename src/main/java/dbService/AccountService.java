@@ -4,7 +4,6 @@ import java.dbService.dataSets.User;
 import java.util.Optional;
 
 public class AccountService {
-
     private static DataBaseService dbService;
 
     static {
@@ -17,7 +16,6 @@ public class AccountService {
 
 
     public static boolean signUp(String login, String password) {
-
         boolean result = false;
         Optional<User> user = Optional.empty();
         try {
@@ -35,13 +33,10 @@ public class AccountService {
             }
             result = true;
         }
-
         return result;
-
     }
 
     public static boolean signIn(String login, String password) {
-
         return checkRegister(login) && checkPassword(login, password);
     }
 
@@ -53,7 +48,6 @@ public class AccountService {
         } catch (DataBaseException e) {
             e.printStackTrace();
         }
-
         return isRegistered;
     }
 
@@ -64,7 +58,6 @@ public class AccountService {
         } catch (DataBaseException e) {
             e.printStackTrace();
         }
-
         return matched;
     }
 }
