@@ -5,11 +5,14 @@
 </head>
 <body>
 <div align="center">
-    <form action="${pageContext.request.contextPath}/newProduct" method="post">
-        Product name <input name="name" type="text"/>
-        Product description <input name="description" type="text">
-        Product price <input name="price" type="number">
-        <button type="submit">Add new product</button>
+    <form action="/add" method="post">
+        Название <input type="text" name="name"> <br>
+        Описание <input type="text" name="description"> <br>
+        Цена <input type="number" step="0.01" min="0" placeholder="0,00" name="price"> <br>
+        <input type="submit" value="Add new Product"></form>
+    </form>
+    <form action="index.jsp">
+        <input type="submit" value="Return back">
     </form>
 </div>
 </body>

@@ -6,9 +6,10 @@ import Entiny.Product;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import service.DataBaseService;
 import utils.HibernateFactory;
 
-public class ProductDAO {
+public class ProductDAO implements InterfaceDAO{
     private static ProductDAO productDAO;
     private final SessionFactory sessionFactory = HibernateFactory.getSessionFactory();
 
@@ -19,21 +20,17 @@ public class ProductDAO {
         return productDAO;
     }
 
-    private ProductDAO() {
+    public ProductDAO() {
+    }
+
+    @Override
+    public void add(Object item) {
+        DataBaseService.products.add(item);
     }
 
     public List<Product> getAll() {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(Product.class);
         return (List<Product>) criteria.list();
-    }
-
-    public void add(Product product) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(product);
-        session.getTransaction().commit();
-        session.close();
-
     }
 }

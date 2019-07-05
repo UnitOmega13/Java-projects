@@ -4,8 +4,14 @@
     <title>First Page</title>
 </head>
 <div align="center">
-    <a href="${pageContext.request.contextPath}/login">Log in</a><br/>
-    <a href="${pageContext.request.contextPath}/registration">Registration</a><br/>
+    <form action="${pageContext.request.contextPath}/users" method="get">
+        Логин <input type="text"> <br>
+        Пароль <input type="password"> <br>
+        <input type="submit" value="Login">
+    </form>
+    <form action="/register" method="get">
+        <input type="submit" value="Registration">
+    </form>
 </div>
 </body>
 </html>
