@@ -4,17 +4,16 @@ import java.dbService.dataSets.User;
 import java.util.Optional;
 
 public class AccountService {
+    
     private static DataBaseService dbService;
-
     static {
         dbService = new DataBaseService();
         System.out.println("AccountService loaded");
     }
-
+    
     private AccountService() {
     }
-
-
+    
     public static boolean signUp(String login, String password) {
         boolean result = false;
         Optional<User> user = Optional.empty();
@@ -39,7 +38,6 @@ public class AccountService {
     public static boolean signIn(String login, String password) {
         return checkRegister(login) && checkPassword(login, password);
     }
-
 
     private static boolean checkRegister(String login) {
         boolean isRegistered = false;
