@@ -3,13 +3,7 @@
 <%@ page import="factories.UserDAOFactory" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="model.Product" %>
-<%@ page import="factories.ProductDAOFactory" %><%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 05.07.2019
-  Time: 4:13
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="factories.ProductDAOFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,29 +36,9 @@
         printWriter.write("</table>");
     %>
 
-    <%
-        List<Product> productList = ProductDAOFactory.getInstance().getAll();
-        printWriter.write("<br><br>");
-        printWriter.write("<form action=\"/new_product\" method=\"get\">\n" +
-                "    <button type=\"submit\">New Product</button>\n" +
-                "</form>");
-        printWriter.write("<table border=\"1\">");
-        printWriter.write("<tr>");
-        printWriter.write("<th>Name</th>");
-        printWriter.write("<th>Description</th>");
-        printWriter.write("<th>Price</th>");
-        printWriter.write("</tr>");
-        if (!productList.isEmpty()) {
-            for (Product product : productList) {
-                printWriter.write("<tr>");
-                printWriter.write("<td>" + product.getName() + "</td>");
-                printWriter.write("<td>" + product.getDescription() + "</td>");
-                printWriter.write("<td>" + product.getPrice() + "</td>");
-                printWriter.write("</tr>");
-            }
-        }
-        printWriter.write("</table>");
-    %>
+    <form action="/products" method="get">
+        <input type="submit" value="Products list">
+    </form>
 
     <br>
     <form action="index.jsp">

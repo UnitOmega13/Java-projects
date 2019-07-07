@@ -3,12 +3,15 @@
 <head>
     <title>First Page</title>
 </head>
-<div align="center">
-    <form action="${pageContext.request.contextPath}/users" method="get">
-        Login <input type="text"> <br>
-        Password <input type="password"> <br>
-        <input type="submit" value="Login">
-    </form>
+<form action="/users" method="get">
+    Логин <input type="text" name="login"> <br>
+    Пароль <input type="password" name="password"> <br>
+    <input type="submit" value="Login">
+</form>
+
+<form action="/registration" method="get">
+    <input type="submit" value="Registration">
+</form>
 </div>
 </body>
 </html>

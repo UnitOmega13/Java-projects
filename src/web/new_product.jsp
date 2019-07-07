@@ -11,7 +11,7 @@
         Price <input type="number" step="0.01" min="0" placeholder="0,00" name="price"> <br>
         <input type="submit" value="Add new Product"></form>
     </form>
-    <form action="/index">
+    <form action="/products">
         <input type="submit" value="Return back">
     </form>
 </div>

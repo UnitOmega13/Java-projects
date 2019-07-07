@@ -36,7 +36,7 @@ public class ProductRegistrationServlet extends HttpServlet {
         } else {
             PRODUCT_DAO.add(new Product(name, description, price));
             resp.setStatus(HttpServletResponse.SC_OK);
-            req.getRequestDispatcher("/users.jsp").forward(req, resp);
+            req.getRequestDispatcher("/products.jsp").forward(req, resp);
         }
     }
 }

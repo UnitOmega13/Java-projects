@@ -24,22 +24,25 @@ public class SignUpServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String login = servletRequest.getParameter("login");
-        String email = servletRequest.getParameter("email");
-        String password = servletRequest.getParameter("password");
-        String repeatedPassword = servletRequest.getParameter("repeatedPassword");
-        if (password.equals(repeatedPassword)) {
+        String login = req.getParameter("login");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String repeatedPassword = req.getParameter("repeatedPassword");
+        if (email.isEmpty() || login.isEmpty() || password.isEmpty()) {
+            req.setAttribute("error", "Empty fields!");
+            req.getRequestDispatcher("registration.jsp").forward(req, resp);
+        }else if (password.equals(repeatedPassword)) {
             User user = UsersDAO.create(email, login, password);
             USERS_DAO.add(user);
-            servletResponse.setStatus(HttpServletResponse.SC_OK);
-            servletRequest.getRequestDispatcher("/users.jsp").forward(servletRequest, servletResponse);
+            resp.setStatus(HttpServletResponse.SC_OK);
+            req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {
-            servletRequest.setAttribute("ERROR!!!", "Passwords are not same!");
-            servletRequest.setAttribute("defaultLogin", login);
-            servletRequest.setAttribute("defaultEmail", email);
-            servletRequest.getRequestDispatcher("/registration.jsp").forward(servletRequest, servletResponse);
+            req.setAttribute("ERROR!!!", "Passwords are not same!");
+            req.setAttribute("defaultLogin", login);
+            req.setAttribute("defaultEmail", email);
+            req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
     }
 }

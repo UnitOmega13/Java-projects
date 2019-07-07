@@ -34,4 +34,14 @@
         <servlet-name>Users</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Products</servlet-name>
+        <servlet-class>controller.ProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Products</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
 </web-app>
