@@ -31,7 +31,6 @@
     }
     printWriter.write("</table>");
 %>
-
 <br>
 <form action="users.jsp">
     <input type="submit" value="Users">

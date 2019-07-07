@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class SignUpServlet extends HttpServlet {
 
@@ -29,20 +30,22 @@ public class SignUpServlet extends HttpServlet {
         String login = req.getParameter("login");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String error = "Passwords are not same!";
         String repeatedPassword = req.getParameter("repeatedPassword");
         if (email.isEmpty() || login.isEmpty() || password.isEmpty()) {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
-        }else if (password.equals(repeatedPassword)) {
+        } else if (password.equals(repeatedPassword)) {
             User user = UsersDAO.create(email, login, password);
             USERS_DAO.add(user);
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {
-            req.setAttribute("ERROR!!!", "Passwords are not same!");
+            req.setAttribute("error", "Passwords are not same!");
             req.setAttribute("defaultLogin", login);
             req.setAttribute("defaultEmail", email);
-            req.getRequestDispatcher("/registration.jsp").forward(req, resp);
+            req.setAttribute(error, repeatedPassword);
+            req.getRequestDispatcher("registration.jsp").forward(req, resp);
         }
     }
 }

@@ -7,14 +7,14 @@
 <body>
 <form action="/registration" method="POST">
     Login <input type="text" name="login" value="<%= (request.getAttribute("defaultLogin") == null) ? ""
-                      : request.getAttribute("defaultLogin")%>"> <br>
-    E-mail <input type="email" name="email"  value="<%= (request.getAttribute("defaultEmail") == null) ? ""
-                      : request.getAttribute("defaultEmail")%>"> <br>
-    Password: <input type="password" name="password"/>
-    Password repeat: <input type="password" name="repeatedPassword"/>
+                      : request.getAttribute("defaultLogin")%>" required /> <br>
+    E-mail <input type="email" name="email" value="<%= (request.getAttribute("defaultEmail") == null) ? ""
+                      : request.getAttribute("defaultEmail")%>" required /> <br>
+    Password: <input type="password" name="password" value="" required/><br>
+    Password repeat: <input type="password" name="repeatedPassword" required/><br>
     <input type="submit" value="Registration">
 </form>
-<form action="index.jsp">
+<form action="/users">
     <input type="submit" value="Back to main page">
 </form>
 </body>
