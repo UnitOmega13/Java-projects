@@ -1,40 +1,20 @@
-package Entiny;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package model;
 
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+
     private int id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "img")
-    private String img;
-    @Column(name = "price")
+    private String description;
     private double price;
-    @Column(name = "product_code")
-    private int productCode;
 
     public Product(String name, String img, double price) {
         this.name = name;
-        this.img = img;
+        this.description = img;
         this.price = price;
-        this.productCode = id;
     }
 
-    public Product(long l, String name, String description, Integer price) {
-    }
-
-    public int getId() {
+    private int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,40 +25,33 @@ public class Product {
         this.name = name;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    private String getImg() {
+        return description;
     }
 
     public double getPrice() {
         return price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(int productCode) {
-        this.productCode = productCode;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Product product = (Product) object;
         if (getId() != product.getId()) return false;
         if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
-        if (getProductCode() != product.getProductCode()) return false;
         if (getName() != null ? !getName().equals(product.getName()) : product.getName() != null) return false;
         return getImg() != null ? getImg().equals(product.getImg()) : product.getImg() == null;
     }
@@ -92,7 +65,7 @@ public class Product {
         result = 31 * result + (getImg() != null ? getImg().hashCode() : 0);
         temp = Double.doubleToLongBits(getPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + getProductCode();
+        result = 31 * result;
         return result;
     }
 
@@ -101,9 +74,8 @@ public class Product {
         return "Item{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", img='" + img + '\'' +
+                ", img='" + description + '\'' +
                 ", price=" + price +
-                ", productCode=" + productCode +
                 '}';
     }
 }

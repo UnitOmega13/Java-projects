@@ -14,7 +14,6 @@
 <body>
 <form action="${pageContext.request.contextPath}/registration" method="POST">
     Login: <input type="text" name="login"/>
-    E-mail <input type="email" name="email" value="${defaultEmail}"> <br>
     Password: <input type="password" name="password"/>
     Password repeat: <input type="password" name="passwordRepeat"/>
     <input type="submit" value="Registration">

@@ -1,11 +1,12 @@
-package utils;
+package factories;
 
-import Entiny.Product;
+import model.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateFactory {
+
     private static SessionFactory sessionFactory;
 
     private HibernateFactory() {

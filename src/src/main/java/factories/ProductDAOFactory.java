@@ -1,8 +1,9 @@
-package service;
+package factories;
 
-import dao.ProductDAO;
+import dao.impl.ProductDAO;
 
 public class ProductDAOFactory {
+
     private static ProductDAO instance;
 
     private ProductDAOFactory() {

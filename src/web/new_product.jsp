@@ -5,13 +5,13 @@
 </head>
 <body>
 <div align="center">
-    <form action="/add" method="post">
-        Название <input type="text" name="name"> <br>
-        Описание <input type="text" name="description"> <br>
-        Цена <input type="number" step="0.01" min="0" placeholder="0,00" name="price"> <br>
+    <form action="/new_product" method="post">
+        Name <input type="text" name="name"> <br>
+        Description <input type="text" name="description"> <br>
+        Price <input type="number" step="0.01" min="0" placeholder="0,00" name="price"> <br>
         <input type="submit" value="Add new Product"></form>
     </form>
-    <form action="index.jsp">
+    <form action="/index">
         <input type="submit" value="Return back">
     </form>
 </div>

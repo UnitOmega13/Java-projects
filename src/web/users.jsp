@@ -1,7 +1,9 @@
-<%@ page import="Entiny.User" %>
+<%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="service.UserDAOFactory" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="factories.UserDAOFactory" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="model.Product" %>
+<%@ page import="factories.ProductDAOFactory" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 05.07.2019
@@ -19,13 +21,13 @@
     <%
         List<User> userList = UserDAOFactory.getInstance().getAll();
         PrintWriter printWriter = response.getWriter();
-        printWriter.write("<form action=\"/register\" method=\"get\">\n" +
-                "<input type=\"submit\" value=\"Добавить пользователя\">\n" +
+        printWriter.write("<form action=\"/registration\" method=\"get\">\n" +
+                "<input type=\"submit\" value=\"New User\">\n" +
                 "</form>");
         printWriter.write("<table border=\"1\">");
         printWriter.write("<tr>");
-        printWriter.write("<th>Email</th>");
         printWriter.write("<th>Login</th>");
+        printWriter.write("<th>Email</th>");
         printWriter.write("<th>Password</th>");
         printWriter.write("</tr>");
         if (!userList.isEmpty()) {
@@ -41,16 +43,16 @@
     %>
 
     <%
-        List<Product> productList = ProductDaoFactory.getInstance().getAll();
+        List<Product> productList = ProductDAOFactory.getInstance().getAll();
         printWriter.write("<br><br>");
-        printWriter.write("<form action=\"/add\" method=\"get\">\n" +
-                "    <button type=\"submit\">Добавить товар</button>\n" +
+        printWriter.write("<form action=\"/new_product\" method=\"get\">\n" +
+                "    <button type=\"submit\">New Product</button>\n" +
                 "</form>");
         printWriter.write("<table border=\"1\">");
         printWriter.write("<tr>");
-        printWriter.write("<th>Наименование</th>");
-        printWriter.write("<th>Описание</th>");
-        printWriter.write("<th>Цена</th>");
+        printWriter.write("<th>Name</th>");
+        printWriter.write("<th>Description</th>");
+        printWriter.write("<th>Price</th>");
         printWriter.write("</tr>");
         if (!productList.isEmpty()) {
             for (Product product : productList) {
@@ -66,7 +68,7 @@
 
     <br>
     <form action="index.jsp">
-        <input type="submit" value="Вернуться на главную">
+        <input type="submit" value="Back to main page">
     </form>
 
 </div>
