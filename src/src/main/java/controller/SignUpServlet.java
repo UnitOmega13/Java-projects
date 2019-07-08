@@ -33,8 +33,7 @@ public class SignUpServlet extends HttpServlet {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
         } else if (password.equals(repeatedPassword)) {
-            User user = UsersDAO.create(email, login, password);
-            USERS_DAO.add(user);
+            USERS_DAO.add(new User(login, email, password));
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {
