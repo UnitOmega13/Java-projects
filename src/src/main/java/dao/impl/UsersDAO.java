@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.UsersDAOInterface;
-import service.DataBaseService;
+import service.DataBase;
 import model.User;
 
 import java.util.List;
@@ -24,11 +24,11 @@ public class UsersDAO implements UsersDAOInterface {
 
     @Override
     public void add(Object o) {
-        DataBaseService.users.add((User) o);
+        DataBase.users.add((User) o);
     }
 
     @Override
     public List getAll() {
-        return DataBaseService.users;
+        return DataBase.users;
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.ProductDAOInterface;
 import model.Product;
-import service.DataBaseService;
+import service.DataBase;
 
 public class ProductDAO implements ProductDAOInterface {
 
@@ -13,10 +13,10 @@ public class ProductDAO implements ProductDAOInterface {
 
     @Override
     public void add(Object item) {
-        DataBaseService.products.add((Product) item);
+        DataBase.products.add((Product) item);
     }
 
     public List<Product> getAll() {
-        return DataBaseService.products;
+        return DataBase.products;
     }
 }
