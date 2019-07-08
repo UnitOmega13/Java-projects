@@ -9,7 +9,7 @@ public class ProductDAOFactory {
     private ProductDAOFactory() {
     }
 
-    public static ProductDAO getInstance() {
+    public static synchronized ProductDAO getInstance() {
         if (instance == null) {
             instance = new ProductDAO();
         }
