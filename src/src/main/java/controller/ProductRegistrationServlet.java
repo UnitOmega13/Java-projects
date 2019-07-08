@@ -2,7 +2,9 @@ package controller;
 
 import dao.impl.ProductDAO;
 import factories.ProductDAOFactory;
+import factories.ProductServiceFactory;
 import model.Product;
+import service.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,7 @@ import java.io.IOException;
 @WebServlet(value = "/new_product")
 public class ProductRegistrationServlet extends HttpServlet {
 
-    private static final ProductDAO PRODUCT_DAO = ProductDAOFactory.getInstance();
+    private static final ProductService PRODUCT_SERVICE_FACTORY = ProductServiceFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,11 +33,11 @@ public class ProductRegistrationServlet extends HttpServlet {
         if (!request.getParameter("price").isEmpty()) {
             price = Double.valueOf(request.getParameter("price"));
         }
-        if (name.isEmpty() || description.isEmpty() || price < 0) {
+        if (name.isEmpty() || description.isEmpty() || price <= 0) {
             request.setAttribute("isEmpty", "All fields must be filled and price must be biggest than 0.");
             request.getServletContext().getRequestDispatcher("/new_product.jsp").forward(request, response);
         } else {
-            PRODUCT_DAO.add(new Product(name, description, price));
+            PRODUCT_SERVICE_FACTORY.add(new Product(name, description, price));
             response.setStatus(HttpServletResponse.SC_OK);
             request.getRequestDispatcher("/products.jsp").forward(request, response);
         }
