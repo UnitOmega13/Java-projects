@@ -2,6 +2,7 @@
 <%@ page import="factories.ProductDAOFactory" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.List" %>
+<%@ page import="factories.ProductServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 <%
-    List<Product> productList = ProductDAOFactory.getInstance().getAll();
+    List<Product> productList = ProductServiceFactory.getInstance().getAll();
     PrintWriter printWriter = response.getWriter();
     printWriter.write("<form action=\"/new_product\" method=\"get\">\n" +
             "    <button type=\"submit\">Добавить товар</button>\n" +

@@ -4,6 +4,7 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="model.Product" %>
 <%@ page import="factories.ProductDAOFactory" %>
+<%@ page import="factories.UserServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +14,7 @@
 
 <div align="left">
     <%
-        List<User> userList = UserDAOFactory.getInstance().getAll();
+        List<User> userList = UserServiceFactory.getInstance().getAll();
         PrintWriter printWriter = response.getWriter();
         printWriter.write("<form action=\"/registration\" method=\"get\">\n" +
                 "<input type=\"submit\" value=\"New User\">\n" +
