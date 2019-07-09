@@ -1,5 +1,7 @@
 package service.Impl;
 
+import dao.UsersDAO;
+import factories.UserDAOFactory;
 import model.User;
 import service.DataBase;
 import service.UserService;
@@ -7,13 +9,16 @@ import service.UserService;
 import java.util.List;
 
 public class UserServiceInpl implements UserService {
+
+    private UsersDAO usersDAO = new UserDAOFactory.getInstance();
+
     @Override
     public void add(User user) {
-        DataBase.users.add(user);
+        usersDAO.add(user);
     }
 
     @Override
     public List<User> getAll() {
-        return DataBase.users;
+        return usersDAO.getAll();
     }
 }

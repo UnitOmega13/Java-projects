@@ -1,18 +1,17 @@
 package factories;
 
-import dao.UsersDAOInterface;
-import dao.impl.UsersDAO;
+import dao.UsersDAO;
 
 public class UserDAOFactory {
 
-    private static UsersDAOInterface instance;
+    private static UsersDAO instance;
 
     private UserDAOFactory() {
     }
 
-    public static synchronized UsersDAOInterface getInstance() {
+    public static UsersDAO getInstance() {
         if (instance == null) {
-            instance = new UsersDAO();
+            instance = new dao.impl.UsersDAO();
         }
         return instance;
     }

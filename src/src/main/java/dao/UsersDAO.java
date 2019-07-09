@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-public interface UsersDAOInterface<User> {
+public interface UsersDAO<User> {
 
     void add(User user);
     List<User> getAll();

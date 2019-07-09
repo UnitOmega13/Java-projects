@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-public interface ProductDAOInterface<Product> {
+public interface ProductDAO<Product> {
 
     void add(Product product);
     List<Product> getAll();
