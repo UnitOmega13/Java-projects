@@ -3,14 +3,13 @@ package service.Impl;
 import dao.ProductDAO;
 import factories.ProductDAOFactory;
 import model.Product;
-import service.DataBase;
 import service.ProductService;
 
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService<Product> {
 
-    private ProductDAO productDAO = new ProductDAOFactory.getInstance();
+    private ProductDAO productDAO = ProductDAOFactory.getInstance();
 
     @Override
     public void add(Product product) {
@@ -20,5 +19,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAll() {
         return productDAO.getAll();
+    }
+
+    @Override
+    public Product getProduct(Long productId) {
+        return (Product) productDAO.getProduct(productId);
+    }
+
+    @Override
+    public void removeProduct(Long productId) {
+        productDAO.removeProduct(productId);
     }
 }

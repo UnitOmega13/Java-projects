@@ -13,7 +13,7 @@ public class Product {
         this.price = price;
     }
 
-    private int getId() {
+    public int getId() {
         return id;
     }
 

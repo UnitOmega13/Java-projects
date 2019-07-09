@@ -1,9 +1,6 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="factories.UserDAOFactory" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="model.Product" %>
-<%@ page import="factories.ProductDAOFactory" %>
 <%@ page import="factories.UserServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -31,6 +28,10 @@
                 printWriter.write("<td>" + user.getEmail() + "</td>");
                 printWriter.write("<td>" + user.getLogin() + "</td>");
                 printWriter.write("<td>" + user.getPassword() + "</td>");
+                printWriter.write("<td>" + "<a href = \"/users/remove?id=" + user.getId()
+                        + "\"> remove user</a>" + "</td>");
+                printWriter.write("<td>" + "<a href = \"/users/change?id=" + user.getId()
+                        + "\"> change user</a>" + "</td>");
                 printWriter.write("</tr>");
             }
         }
