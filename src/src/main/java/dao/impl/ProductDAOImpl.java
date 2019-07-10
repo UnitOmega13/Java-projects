@@ -6,13 +6,14 @@ import model.Product;
 import org.apache.log4j.Logger;
 import service.DataBase;
 
-public class ProductDAO implements dao.ProductDAO<Product> {
+public class ProductDAOImpl implements ProductDAOImpl<Product> {
 
-    private static final Logger LOGGER = Logger.getLogger(ProductDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(ProductDAOImpl.class);
 
     @Override
     public void add(Product product) {
         DataBase.products.add(product);
+        LOGGER.info("product " + product + " added");
     }
 
     public List<Product> getAll() {

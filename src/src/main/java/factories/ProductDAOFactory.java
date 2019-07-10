@@ -1,6 +1,7 @@
 package factories;
 
 import dao.ProductDAO;
+import dao.impl.ProductDAOImpl;
 
 public class ProductDAOFactory {
 
@@ -11,7 +12,7 @@ public class ProductDAOFactory {
 
     public static synchronized ProductDAO getInstance() {
         if (instance == null) {
-            instance = new dao.impl.ProductDAO();
+            instance = new ProductDAOImpl();
         }
         return instance;
     }

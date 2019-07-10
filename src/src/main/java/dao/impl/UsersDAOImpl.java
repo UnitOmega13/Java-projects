@@ -6,9 +6,9 @@ import model.User;
 
 import java.util.List;
 
-public class UsersDAO implements dao.UsersDAO<User> {
+public class UsersDAOImpl implements UsersDAOImpl<User> {
 
-    private static final Logger LOGGER = Logger.getLogger(UsersDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(UsersDAOImpl.class);
 
     @Override
     public void add(User user) {

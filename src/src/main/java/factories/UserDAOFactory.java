@@ -1,6 +1,7 @@
 package factories;
 
 import dao.UsersDAO;
+import dao.impl.UsersDAOImpl;
 
 public class UserDAOFactory {
 
@@ -11,7 +12,7 @@ public class UserDAOFactory {
 
     public static UsersDAO getInstance() {
         if (instance == null) {
-            instance = new dao.impl.UsersDAO();
+            instance = new UsersDAOImpl();
         }
         return instance;
     }
