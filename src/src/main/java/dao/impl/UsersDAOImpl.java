@@ -32,4 +32,12 @@ public class UsersDAOImpl implements UsersDAO<User> {
         DataBase.users.remove(user);
         LOGGER.info("user " + user + " removed");
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return DataBase.users.stream()
+                .filter(e -> e.getEmail().equals(email))
+                .findFirst()
+                .orElse(new User("admin", "admin", ""));
+    }
 }

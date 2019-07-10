@@ -23,7 +23,12 @@ public class UserServiceInpl implements UserService<User> {
 
     @Override
     public User getUserById(long userID) {
-        return usersDAO.getUserById(userID);
+        return (User) usersDAO.getUserById(userID);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return usersDAO.getUserByEmail(email);
     }
 
     @Override
