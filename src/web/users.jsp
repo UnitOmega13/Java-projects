@@ -30,7 +30,7 @@
                 printWriter.write("<td>" + user.getPassword() + "</td>");
                 printWriter.write("<td>" + "<a href = \"/users/remove?id=" + user.getId()
                         + "\"> remove user</a>" + "</td>");
-                printWriter.write("<td>" + "<a href = \"/users/change?id=" + user.getId()
+                printWriter.write("<td>" + "<a href = \"/users/edit?id=" + user.getId()
                         + "\"> change user</a>" + "</td>");
                 printWriter.write("</tr>");
             }

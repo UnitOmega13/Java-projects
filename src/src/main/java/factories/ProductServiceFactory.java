@@ -4,6 +4,7 @@ import service.Impl.ProductServiceImpl;
 import service.ProductService;
 
 public class ProductServiceFactory {
+
     private static ProductService instance;
 
     private ProductServiceFactory() {

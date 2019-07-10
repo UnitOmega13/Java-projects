@@ -10,7 +10,7 @@ public class UserDAOFactory {
     private UserDAOFactory() {
     }
 
-    public static UsersDAO getInstance() {
+    public static synchronized UsersDAO getInstance() {
         if (instance == null) {
             instance = new UsersDAOImpl();
         }

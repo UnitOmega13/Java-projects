@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/users/change")
+@WebServlet(value = "/users/edit")
 public class ChangeProductServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final ProductService productService = ProductServiceFactory.getInstance();
     private Product product;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Double price = Double.valueOf(request.getParameter("price"));
@@ -32,7 +33,8 @@ public class ChangeProductServlet extends HttpServlet {
         response.sendRedirect("/products");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Long productId = Long.valueOf(request.getParameter("productId"));
         product = (Product) productService.getProduct(productId);
         request.setAttribute("name", product.getName());

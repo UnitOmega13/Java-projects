@@ -2,11 +2,12 @@ package dao.impl;
 
 import java.util.List;
 
+import dao.ProductDAO;
 import model.Product;
 import org.apache.log4j.Logger;
 import service.DataBase;
 
-public class ProductDAOImpl implements ProductDAOImpl<Product> {
+public class ProductDAOImpl implements ProductDAO<Product> {
 
     private static final Logger LOGGER = Logger.getLogger(ProductDAOImpl.class);
 
@@ -21,13 +22,7 @@ public class ProductDAOImpl implements ProductDAOImpl<Product> {
     }
 
     @Override
-    public Product getProduct(Long productId) {
-        return DataBase.products.stream().filter(e -> e.getId() == productId).findFirst().get();
-    }
-
-    @Override
-    public void removeProduct(Long productId) {
-        Product product = getProduct(productId);
+    public void removeProduct(Product product) {
         DataBase.products.remove(product);
         LOGGER.info("product " + product + " was deleted from the db");
     }

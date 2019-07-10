@@ -29,7 +29,7 @@
             printWriter.write("<td>" + product.getPrice() + "</td>");
             printWriter.write("<td>" + "<a href = \"/products/remove?id=" + product.getId()
                     + "\"> remove product</a>" + "</td>");
-            printWriter.write("<td>" + "<a href = \"/products/change?id=" + product.getId()
+            printWriter.write("<td>" + "<a href = \"/products/edit?id=" + product.getId()
                     + "\"> change product</a>" + "</td>");
             printWriter.write("</tr>");
         }
