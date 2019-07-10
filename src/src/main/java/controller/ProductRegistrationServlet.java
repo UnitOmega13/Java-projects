@@ -1,7 +1,5 @@
 package controller;
 
-import dao.impl.ProductDAO;
-import factories.ProductDAOFactory;
 import factories.ProductServiceFactory;
 import model.Product;
 import service.ProductService;

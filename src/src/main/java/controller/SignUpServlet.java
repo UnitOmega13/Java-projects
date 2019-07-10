@@ -2,8 +2,6 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
-import dao.impl.UsersDAO;
-import factories.UserDAOFactory;
 import service.UserService;
 
 import javax.servlet.ServletException;

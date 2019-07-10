@@ -2,14 +2,15 @@ package dao.impl;
 
 import java.util.List;
 
+import dao.ProductDAO;
 import model.Product;
 import service.DataBase;
 
-public class ProductDAO implements dao.ProductDAO {
+public class ProductDAOImpl implements ProductDAO<Product> {
 
     @Override
-    public void add(Product item) {
-        DataBase.products.add((Product) item);
+    public void add(Product product) {
+        DataBase.products.add(product);
     }
 
     public List<Product> getAll() {

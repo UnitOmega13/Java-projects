@@ -1,15 +1,16 @@
 package dao.impl;
 
+import dao.UsersDAO;
 import service.DataBase;
 import model.User;
 
 import java.util.List;
 
-public class UsersDAO implements dao.UsersDAO {
+public class UsersDAOImpl implements UsersDAO<User> {
 
     @Override
-    public void add(User o) {
-        DataBase.users.add((User) o);
+    public void add(User user) {
+        DataBase.users.add(user);
     }
 
     @Override
