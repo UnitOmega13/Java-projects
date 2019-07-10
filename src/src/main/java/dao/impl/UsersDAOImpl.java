@@ -22,6 +22,10 @@ public class UsersDAOImpl implements UsersDAO<User> {
         return DataBase.users;
     }
 
+    @Override
+    public User getUserById(long userId) {
+        return DataBase.users.get(Math.toIntExact(userId));
+    }
 
     @Override
     public void removeUser(User user) {

@@ -21,6 +21,11 @@ public class ProductServiceImpl implements ProductService<Product> {
         return productDAO.getAll();
     }
 
+    @Override
+    public Product getProduct(long productID) {
+        return productDAO.getProduct(productID);
+    }
+
 
     @Override
     public void removeProduct(Product product) {

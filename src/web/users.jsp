@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="factories.UserServiceFactory" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Users</title>
@@ -10,33 +10,20 @@
 <body>
 
 <div align="left">
-    <%
-        List<User> userList = UserServiceFactory.getInstance().getAll();
-        PrintWriter printWriter = response.getWriter();
-        printWriter.write("<form action=\"/registration\" method=\"get\">\n" +
-                "<input type=\"submit\" value=\"New User\">\n" +
-                "</form>");
-        printWriter.write("<table border=\"1\">");
-        printWriter.write("<tr>");
-        printWriter.write("<th>Login</th>");
-        printWriter.write("<th>Email</th>");
-        printWriter.write("<th>Password</th>");
-        printWriter.write("</tr>");
-        if (!userList.isEmpty()) {
-            for (User user : userList) {
-                printWriter.write("<tr>");
-                printWriter.write("<td>" + user.getEmail() + "</td>");
-                printWriter.write("<td>" + user.getLogin() + "</td>");
-                printWriter.write("<td>" + user.getPassword() + "</td>");
-                printWriter.write("<td>" + "<a href = \"/users/remove?id=" + user.getId()
-                        + "\"> remove user</a>" + "</td>");
-                printWriter.write("<td>" + "<a href = \"/users/edit?id=" + user.getId()
-                        + "\"> change user</a>" + "</td>");
-                printWriter.write("</tr>");
-            }
-        }
-        printWriter.write("</table>");
-    %>
+    <table border="1">
+        <tr>
+            <th>Login</th>
+            <th>Password</th>
+        </tr>
+        <c:forEach items="${allUsers}" var="user">
+            <tr>
+                <td>${user.login}</td>
+                <td>${user.password}</td>
+                <td><a href="users/edit?id=${user.id}">Update</a></td>
+                <td><a href="users/delete?id=${user.id}">Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
 
     <form action="/products" method="get">
         <input type="submit" value="Products list">

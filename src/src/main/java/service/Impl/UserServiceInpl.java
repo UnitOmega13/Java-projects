@@ -22,6 +22,11 @@ public class UserServiceInpl implements UserService<User> {
     }
 
     @Override
+    public User getUserById(long userID) {
+        return usersDAO.getUserById(userID);
+    }
+
+    @Override
     public void removeUser(User user) {
         usersDAO.removeUser(user);
     }

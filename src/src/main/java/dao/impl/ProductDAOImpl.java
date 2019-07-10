@@ -22,6 +22,11 @@ public class ProductDAOImpl implements ProductDAO<Product> {
     }
 
     @Override
+    public Product getProduct(long productID) {
+        return DataBase.products.get(Math.toIntExact(productID));
+    }
+
+    @Override
     public void removeProduct(Product product) {
         DataBase.products.remove(product);
         LOGGER.info("product " + product + " was deleted from the db");

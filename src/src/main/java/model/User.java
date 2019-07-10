@@ -1,11 +1,8 @@
 package model;
 
-import javax.persistence.Table;
-import javax.persistence.Entity;
-
 public class User {
 
-    private Integer id;
+    private Long id;
     private String email;
     private String login;
     private String password;
@@ -28,11 +25,11 @@ public class User {
         return password;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -42,10 +39,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setEmail(String email) {

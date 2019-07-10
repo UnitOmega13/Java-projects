@@ -36,7 +36,7 @@ public class ChangeProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Long productId = Long.valueOf(request.getParameter("productId"));
-        product = (Product) productService.getProduct(productId);
+        product = productService.getProduct(productId);
         request.setAttribute("name", product.getName());
         request.setAttribute("description", product.getDescription());
         request.setAttribute("price", product.getPrice());
