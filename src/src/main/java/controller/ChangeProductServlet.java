@@ -18,7 +18,7 @@ public class ChangeProductServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final ProductService productService = ProductServiceFactory.getInstance();
-    private Product product;
+    Product product;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

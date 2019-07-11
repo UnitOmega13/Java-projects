@@ -17,7 +17,7 @@ public class ChangeUserServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final UserService userService = UserServiceFactory.getInstance();
-    private User user;
+    User user;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
