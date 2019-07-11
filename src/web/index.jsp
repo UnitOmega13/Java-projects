@@ -3,12 +3,12 @@
 <head>
     <title>First Page</title>
 </head>
-<form action="/users" method="get">
-    Логин <input type="text" name="login"> <br>
-    Пароль <input type="password" name="password"> <br>
-    <input type="submit" value="Login">
+${passerror}
+<form action="/registration" method="post">
+    <p>Email <input name="email" type="email"></p>
+    <p>Password <input name="password" type="password"></p>
+    <button type="submit">Submit</button>
 </form>
-
 <form action="/registration" method="get">
     <input type="submit" value="Registration">
 </form>

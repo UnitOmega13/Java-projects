@@ -28,18 +28,20 @@ public class SignUpServlet extends HttpServlet {
         String login = req.getParameter("login");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String accessRole = req.getParameter("accessRole");
         String repeatedPassword = req.getParameter("repeatedPassword");
         if (email.isEmpty() || login.isEmpty() || password.isEmpty()) {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
         } else if (password.equals(repeatedPassword)) {
-            userService.add(new User(login, email, password));
+            userService.add(new User(login, email, password, accessRole));
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {
             req.setAttribute("error", "Passwords are not same!");
             req.setAttribute("defaultLogin", login);
             req.setAttribute("defaultEmail", email);
+            req.setAttribute("accessRole", accessRole);
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
         }
     }

@@ -4,39 +4,43 @@
     <title>Users</title>
 </head>
 <body>
-<div style="text-align: center">
-    ${accessDenied}
-    <p>
-        <button onclick="location.href='/users/add'"> New user</button>
-        <button onclick="location.href='/products'"> Products</button>
-    </p>
-    <table align="center" border="1">
+
+<div align="left">
+    <button onclick="location.href='/registration'"> Add user</button>
+    <table border="1">
         <tr>
-            <th>Login</th>
             <th>Email</th>
             <th>Password</th>
         </tr>
-        <c:forEach var="user" items="${userList}">
+        <c:forEach var="user" items="${allUsers}">
             <tr>
-                <td>${user.login}</td>
                 <td>${user.email}</td>
                 <td>${user.password}</td>
-                <td>${user.accessRole}</td>
                 <td>
                     <form action="/users/edit" method="get">
-                        <input type="hidden" name="userId" value="${user.id}">
+                        <input type="hidden" name="userId" value="${user.getId}">
                         <button type="submit">edit</button>
                     </form>
                 </td>
                 <td>
                     <form action="/users/delete" method="get">
-                        <input type="hidden" name="userId" value="${user.id}">
+                        <input type="hidden" name="userId" value="${user.getId}">
                         <button type="submit">delete</button>
                     </form>
                 </td>
             </tr>
         </c:forEach>
     </table>
+
+    <form action="products.jsp" method="get">
+        <input type="submit" value="Products list">
+    </form>
+
+    <br>
+    <form action="index.jsp">
+        <input type="submit" value="Back to main page">
+    </form>
+
 </div>
 </body>
 </html>

@@ -24,6 +24,7 @@ public class UsersDAOImpl implements UsersDAO<User> {
 
     @Override
     public User getUserById(long userId) {
+
         return DataBase.users.get(Math.toIntExact(userId));
     }
 
@@ -38,6 +39,6 @@ public class UsersDAOImpl implements UsersDAO<User> {
         return DataBase.users.stream()
                 .filter(e -> e.getEmail().equals(email))
                 .findFirst()
-                .orElse(new User("admin", "admin", ""));
+                .orElse(new User("admin@admin.com", "admin", "admin", "admin"));
     }
 }

@@ -24,15 +24,18 @@ public class ChangeUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String repeatPassword = request.getParameter("repeatedPassword");
+        String accessRole = request.getParameter("accessRole");
         if (password.equals(repeatPassword) && !password.equals("")) {
             User oldUser = user;
             user.setEmail(email);
             user.setPassword(password);
+            user.setAccessRole(accessRole);
             LOGGER.info("user " + oldUser + " was edited in the db");
             response.sendRedirect("/users");
         } else {
-            request.setAttribute("passerror", "Passwords is incorrect");
+            request.setAttribute("error", "Passwords is incorrect");
             request.setAttribute("email", email);
+            request.setAttribute("accessRole", accessRole);
             request.setAttribute("edit", "/user/edit");
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }

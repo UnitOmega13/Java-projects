@@ -6,11 +6,13 @@ public class User {
     private String email;
     private String login;
     private String password;
+    private String accessRole;
 
-    public User(String login,String email, String password) {
-        this.login = login;
+    public User(String email, String login, String password, String accessRole) {
         this.email = email;
+        this.login = login;
         this.password = password;
+        this.accessRole = accessRole;
     }
 
     public String getLogin() {
@@ -44,4 +46,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getAccessRole() {
+        return accessRole;
+    }
+
+    public void setAccessRole(String accessRole) {
+        this.accessRole = accessRole;
+    }
+
+
 }
