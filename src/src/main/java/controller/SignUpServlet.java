@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class SignUpServlet extends HttpServlet {
 
-    private static final UsersDAO USERS_DAO = UserDAOFactory.getInstance();
+    private static final UsersDAO usersDAO = UserDAOFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
@@ -32,7 +32,7 @@ public class SignUpServlet extends HttpServlet {
         String repeatedPassword = servletRequest.getParameter("repeatedPassword");
         if (password.equals(repeatedPassword)) {
             User user = UsersDAO.create(email, login, password);
-            USERS_DAO.add(user);
+            usersDAO.add(user);
             servletResponse.setStatus(HttpServletResponse.SC_OK);
             servletRequest.getRequestDispatcher("/users.jsp").forward(servletRequest, servletResponse);
         } else {

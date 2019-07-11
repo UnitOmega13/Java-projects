@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ProductRegistrationServlet extends HttpServlet {
 
-    private static final ProductDAO PRODUCT_DAO = ProductDAOFactory.getInstance();
+    private static final ProductDAO productDAO = ProductDAOFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class ProductRegistrationServlet extends HttpServlet {
             req.setAttribute("isEmpty", "All fields must be filled and price must be biggest than 0.");
             req.getServletContext().getRequestDispatcher("/new_product.jsp").forward(req, resp);
         } else {
-            PRODUCT_DAO.add(new Product(name, description, price));
+            productDAO.add(new Product(name, description, price));
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         }
