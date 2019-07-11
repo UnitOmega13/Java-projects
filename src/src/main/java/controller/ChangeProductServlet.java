@@ -40,7 +40,7 @@ public class ChangeProductServlet extends HttpServlet {
         request.setAttribute("name", product.getName());
         request.setAttribute("description", product.getDescription());
         request.setAttribute("price", product.getPrice());
-        request.setAttribute("edit", "/product/edit");
-        request.getRequestDispatcher("/add_product.jsp").forward(request, response);
+        request.setAttribute("action", "/products/edit");
+        request.getRequestDispatcher("/new_product.jsp").forward(request, response);
     }
 }

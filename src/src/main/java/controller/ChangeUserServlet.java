@@ -36,7 +36,7 @@ public class ChangeUserServlet extends HttpServlet {
             request.setAttribute("error", "Passwords is incorrect");
             request.setAttribute("email", email);
             request.setAttribute("accessRole", accessRole);
-            request.setAttribute("edit", "/user/edit");
+            request.setAttribute("action", "/users/edit");
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
     }
@@ -46,7 +46,7 @@ public class ChangeUserServlet extends HttpServlet {
         Long userId = Long.valueOf(request.getParameter("userId"));
         user = (User) userService.getUserById(userId);
         request.setAttribute("email", user.getEmail());
-        request.setAttribute("action", "/user/edit");
+        request.setAttribute("action", "/users/edit");
         request.getRequestDispatcher("/registration.jsp").forward(request, response);
     }
 }
