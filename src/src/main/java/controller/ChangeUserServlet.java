@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/products/edit")
+@WebServlet(value = "/users/edit")
 public class ChangeUserServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final UserService userService = UserServiceFactory.getInstance();
-    private User user;
+    User user;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class ChangeUserServlet extends HttpServlet {
         } else {
             request.setAttribute("passerror", "Passwords is incorrect");
             request.setAttribute("email", email);
-            request.setAttribute("action", "/user/edit");
+            request.setAttribute("edit", "/user/edit");
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
     }

@@ -1,7 +1,6 @@
 package controller;
 
 import factories.UserServiceFactory;
-import model.User;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ public class UsersServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<User> allUsers = userService.getAll();
+        List allUsers = userService.getAll();
         request.setAttribute("allUsers", allUsers);
         request.getRequestDispatcher("/users.jsp").forward(request, response);
     }

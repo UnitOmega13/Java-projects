@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/users/edit")
+@WebServlet(value = "/products/edit")
 public class ChangeProductServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final ProductService productService = ProductServiceFactory.getInstance();
-    private Product product;
+    Product product;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class ChangeProductServlet extends HttpServlet {
         product.setName(name);
         product.setDescription(description);
         product.setPrice(price);
-        LOGGER.info("product " + oldProduct + " was edited in the db");
+        LOGGER.info("product " + oldProduct + " edited");
         response.sendRedirect("/products");
     }
 
@@ -40,7 +40,7 @@ public class ChangeProductServlet extends HttpServlet {
         request.setAttribute("name", product.getName());
         request.setAttribute("description", product.getDescription());
         request.setAttribute("price", product.getPrice());
-        request.setAttribute("action", "/edit/product");
+        request.setAttribute("edit", "/product/edit");
         request.getRequestDispatcher("/add_product.jsp").forward(request, response);
     }
 }
