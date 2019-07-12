@@ -19,7 +19,8 @@ public class MainPageServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(MainPageServlet.class);
     private static final UserService userService = UserServiceFactory.getInstance();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("password");

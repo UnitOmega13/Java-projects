@@ -36,5 +36,4 @@ public class UserAccessFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
     }
-
 }

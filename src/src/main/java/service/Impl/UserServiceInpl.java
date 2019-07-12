@@ -32,7 +32,7 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public void removeUser(User user) {
-        usersDAO.removeUser(user);
+    public void removeUser(long userID) {
+        usersDAO.removeUser(getUserById(userID));
     }
 }
