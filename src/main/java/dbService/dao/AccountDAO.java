@@ -19,7 +19,7 @@ public class AccountDAO {
     }
 
     public User getUserByLogin(String login) {
-        Query query = session.createQuery("from User where login = :paramLogin");
+        Query query = session.createQuery("SELECT FROM User WHERE login = :paramLogin");
         query.setParameter("paramLogin", login);
         List list = query.list();
         if (!list.isEmpty()) {

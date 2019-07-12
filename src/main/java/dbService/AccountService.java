@@ -8,7 +8,6 @@ public class AccountService {
 
     static {
         dbService = new DataBaseService();
-        System.out.println("AccountService loaded");
     }
 
     private AccountService() {

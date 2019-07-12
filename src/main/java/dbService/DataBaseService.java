@@ -21,8 +21,8 @@ import java.dbService.dataSets.UsersDataSet;
  * Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
 public class DataBaseService {
-    private static final String hibernate_show_sql = "true";
-    private static final String hibernate_hbm2ddl_auto = "update"; // create
+    private static final String HIBERNATE_SHOW_SQL = "true";
+    private static final String hibernate_hbm2ddl_auto = "update";
     private final SessionFactory sessionFactory;
 
     public DataBaseService() {
@@ -40,7 +40,7 @@ public class DataBaseService {
         configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/db_example");
         configuration.setProperty("hibernate.connection.username", "root");
         configuration.setProperty("hibernate.connection.password", "root");
-        configuration.setProperty("hibernate.show_sql", hibernate_show_sql);
+        configuration.setProperty("hibernate.show_sql", HIBERNATE_SHOW_SQL);
         configuration.setProperty("hibernate.hbm2ddl.auto", hibernate_hbm2ddl_auto);
         return configuration;
     }
@@ -54,7 +54,7 @@ public class DataBaseService {
         configuration.setProperty("hibernate.connection.url", "jdbc:h2:./h2db");
         configuration.setProperty("hibernate.connection.username", "tully"); // tully
         configuration.setProperty("hibernate.connection.password", "tully"); // tully
-        configuration.setProperty("hibernate.show_sql", hibernate_show_sql);
+        configuration.setProperty("hibernate.show_sql", HIBERNATE_SHOW_SQL);
         configuration.setProperty("hibernate.hbm2ddl.auto", hibernate_hbm2ddl_auto);
         return configuration;
     }
@@ -89,7 +89,6 @@ public class DataBaseService {
         User user = getUserByLogin(login);
         return user == null ? null : user.getPassword();
     }
-
 
     public UsersDataSet getUser(long id) throws DataBaseException {
         try {
@@ -146,6 +145,4 @@ public class DataBaseService {
     public void close() {
         sessionFactory.close();
     }
-
-
 }

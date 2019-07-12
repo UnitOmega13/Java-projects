@@ -13,12 +13,12 @@ import java.io.Serializable;
 @Entity
 @Table(name = "users_lesson")
 public class UsersDataSet implements Serializable {
-    private static final long serialVersionUID = -3581752392903938614L; // Serializable Important to Hibernate!
+    private static final Long serialVersionUID = -3581752392903938614L; // Serializable Important to Hibernate!
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name", unique = true, updatable = false)
     private String name;
