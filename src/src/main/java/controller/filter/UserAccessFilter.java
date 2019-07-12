@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(filterName = "UserAccessFilter",
-        value = {"/user/new", "/user/delete", "/user/edit"})
+        urlPatterns = {"/user/*"})
 public class UserAccessFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(ChangeProductServlet.class);

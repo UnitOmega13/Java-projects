@@ -16,7 +16,8 @@ public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String login = request.getParameter("login");
         String email = request.getParameter("email");
         String accessRole = request.getParameter("accessRole");
@@ -35,7 +36,8 @@ public class NewUserServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setAttribute("action", "/users/add");
         request.getRequestDispatcher("/registration.jsp").forward(request, response);
     }

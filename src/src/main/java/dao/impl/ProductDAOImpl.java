@@ -7,7 +7,7 @@ import model.Product;
 import org.apache.log4j.Logger;
 import service.DataBase;
 
-public class ProductDAOImpl implements ProductDAO<Product> {
+public class ProductDAOImpl implements ProductDAO {
 
     private static final Logger LOGGER = Logger.getLogger(ProductDAOImpl.class);
 

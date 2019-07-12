@@ -7,7 +7,7 @@ import service.UserService;
 
 import java.util.List;
 
-public class UserServiceInpl implements UserService<User> {
+public class UserServiceInpl implements UserService {
 
     private UsersDAO usersDAO = UserDAOFactory.getInstance();
 
@@ -23,7 +23,7 @@ public class UserServiceInpl implements UserService<User> {
 
     @Override
     public User getUserById(long userID) {
-        return (User) usersDAO.getUserById(userID);
+        return usersDAO.getUserById(userID);
     }
 
     @Override

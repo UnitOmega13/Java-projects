@@ -7,7 +7,7 @@ import model.User;
 
 import java.util.List;
 
-public class UsersDAOImpl implements UsersDAO<User> {
+public class UsersDAOImpl implements UsersDAO {
 
     private static final Logger LOGGER = Logger.getLogger(UsersDAOImpl.class);
 
@@ -24,7 +24,6 @@ public class UsersDAOImpl implements UsersDAO<User> {
 
     @Override
     public User getUserById(long userId) {
-
         return DataBase.users.get(Math.toIntExact(userId));
     }
 

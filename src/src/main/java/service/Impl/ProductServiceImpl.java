@@ -7,7 +7,7 @@ import service.ProductService;
 
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService<Product> {
+public class ProductServiceImpl implements ProductService {
 
     private ProductDAO productDAO = ProductDAOFactory.getInstance();
 
