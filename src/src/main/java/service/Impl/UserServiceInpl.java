@@ -6,6 +6,7 @@ import model.User;
 import service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserServiceInpl implements UserService {
 
@@ -22,17 +23,17 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public User getUserById(long userID) {
+    public Optional<User> getUserById(long userID) {
         return usersDAO.getUserById(userID);
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         return usersDAO.getUserByEmail(email);
     }
 
     @Override
     public void removeUser(long userID) {
-        usersDAO.removeUser(getUserById(userID));
+        usersDAO.removeUser(userID);
     }
 }

@@ -3,13 +3,14 @@ package dao;
 import model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsersDAO{
 
     void add(User user);
     List<User> getAll();
-    User getUserById(long userId);
-    void removeUser(User user);
-    User getUserByEmail(String email);
+    Optional<User> getUserById(long userId);
+    void removeUser(Long userId);
+    Optional<User> getUserByEmail(String email);
 
 }

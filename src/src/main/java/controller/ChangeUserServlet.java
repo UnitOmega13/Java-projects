@@ -11,32 +11,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
-@WebServlet(value = "/users/edit")
+@WebServlet(value = "/admin/users/edit")
 public class ChangeUserServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final UserService userService = UserServiceFactory.getInstance();
-    User user;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Long userId = Long.valueOf(request.getParameter("userId"));
+        String login = request.getParameter("login");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String repeatPassword = request.getParameter("repeatedPassword");
         String accessRole = request.getParameter("accessRole");
-        if (password.equals(repeatPassword) && !password.equals("")) {
-            User oldUser = user;
+        String password = request.getParameter("password");
+        String reEnteredPassword = request.getParameter("repeatPassword");
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent() &&
+                password.equals(reEnteredPassword) &&
+                !password.equals("")) {
+            User user = optionalUser.get();
+            LOGGER.info("user " + user + " edited");
+            user.setLogin(login);
             user.setEmail(email);
-            user.setPassword(password);
             user.setAccessRole(accessRole);
-            LOGGER.info("user " + oldUser + " was edited in the db");
-            response.sendRedirect("/users");
+            user.setPassword(password);
+            response.sendRedirect("/admin/users");
+        } else if (!optionalUser.isPresent()) {
+            request.setAttribute("error", "UserId does not exist");
+            setUserAttributes(userId, email, accessRole, request);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "Passwords is incorrect");
-            request.setAttribute("email", email);
-            request.setAttribute("accessRole", accessRole);
-            request.setAttribute("action", "/users/edit");
+            request.setAttribute("error", "Passwords incorrect");
+            setUserAttributes(userId, email, accessRole, request);
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
     }
@@ -44,9 +52,19 @@ public class ChangeUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Long userId = Long.valueOf(request.getParameter("userId"));
-        user = (User) userService.getUserById(userId);
-        request.setAttribute("email", user.getEmail());
-        request.setAttribute("action", "/users/edit");
-        request.getRequestDispatcher("/registration.jsp").forward(request, response);
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            setUserAttributes(userId, user.getEmail(), user.getAccessRole(), request);
+            request.getRequestDispatcher("/registration.jsp").forward(request, response);
+        }
+    }
+
+    private void setUserAttributes(Long userId, String email, String accessRole,
+                                   HttpServletRequest request) {
+        request.setAttribute("userId", userId);
+        request.setAttribute("email", email);
+        request.setAttribute("accessRole", accessRole);
+        request.setAttribute("action", "/admin/users/edit");
     }
 }

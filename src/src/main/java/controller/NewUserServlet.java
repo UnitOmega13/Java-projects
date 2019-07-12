@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "NewUserServlet", value = "/users/add")
+@WebServlet(name = "NewUserServlet", value = "/admin/users/add")
 public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
@@ -24,11 +24,12 @@ public class NewUserServlet extends HttpServlet {
         String password = request.getParameter("password");
         String reEnteredPassword = request.getParameter("repeatedPassword");
         if (password.equals(reEnteredPassword)) {
-            User user = new User(login, email, password, accessRole);
+            User user = new User(email, login, password, accessRole);
             userService.add(user);
             response.sendRedirect("/users");
         } else {
             request.setAttribute("error", "Passwords are not equals");
+            request.setAttribute("login", login);
             request.setAttribute("email", email);
             request.setAttribute("accessRole", accessRole);
             request.setAttribute("action", "/users/add");

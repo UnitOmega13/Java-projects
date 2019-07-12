@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/products/remove")
+@WebServlet(value = "/products/delete")
 public class RemoveProductServlet extends HttpServlet {
 
     private static final ProductService productService = ProductServiceFactory.getInstance();

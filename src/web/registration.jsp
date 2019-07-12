@@ -5,22 +5,44 @@
     <title>Registration</title>
 </head>
 <body>
-${passerror}
-<form action="${action}" method="POST">
-    Login <input type="text" name="login" value="<%= (request.getAttribute("defaultLogin") == null) ? ""
-                      : request.getAttribute("defaultLogin")%>" required /> <br>
-    E-mail <input type="email" name="email" value="<%= (request.getAttribute("defaultEmail") == null) ? ""
-                      : request.getAttribute("defaultEmail")%>" required /> <br>
-    <p> Access role <select data-selected="${accessRole}" name="accessRole" >
-        <option value="user">user</option>
-        <option value="admin">admin</option>
-    </select></p>
-    Password: <input type="password" name="password" value="" required/><br>
-    Password repeat: <input type="password" name="repeatedPassword" required/><br>
-    <input type="submit" value="Registration">
-</form>
-<form action="/users">
-    <input type="submit" value="Back to users list">
-</form>
+<div align="center">
+    ${passerror}
+    <form action="${action}" method="POST">
+        <table>
+            <tr>
+                <td>
+                    Login <input type="text" name="login" value="<%= (request.getAttribute("defaultLogin") == null) ? ""
+                      : request.getAttribute("defaultLogin")%>" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    E-mail <input type="email" name="email" value="<%= (request.getAttribute("defaultEmail") == null) ? ""
+                      : request.getAttribute("defaultEmail")%>" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                            <input type="radio" name="accessRole" value="user"/> User
+                            <input type="radio" name="accessRole" value="admin"/>Admin
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password: <input type="password" name="password" value="" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Repeat password: <input type="password" name="repeatedPassword" required/>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Registration">
+    </form>
+    <form action="/users">
+        <input type="submit" value="Back to users list">
+    </form>
+</div>
 </body>
 </html>

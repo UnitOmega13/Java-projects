@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AccessServlet", value = "/accessCheck")
+@WebServlet(name = "AccessServlet", value = "/access")
 public class AccessServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
