@@ -13,10 +13,7 @@ public class SignUpServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-
         boolean result = AccountService.signUp(login, password);
-
-
         resp.setContentType("text/html;charset=utf-8");
         if (result) {
             resp.setStatus(HttpServletResponse.SC_OK);
