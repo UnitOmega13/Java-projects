@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 @WebServlet(value = "/new_product")
 public class ProductRegistrationServlet extends HttpServlet {
 
     private static final ProductService PRODUCT_SERVICE = ProductServiceFactory.getInstance();
+    private static UUID id = UUID.randomUUID();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +37,7 @@ public class ProductRegistrationServlet extends HttpServlet {
             request.setAttribute("isEmpty", "All fields must be filled and price must be biggest than 0.");
             request.getServletContext().getRequestDispatcher("/new_product.jsp").forward(request, response);
         } else {
-            PRODUCT_SERVICE.add(new Product(name, description, price));
+            PRODUCT_SERVICE.add(new Product(id, name, description, price));
             response.setStatus(HttpServletResponse.SC_OK);
             request.getRequestDispatcher("/products.jsp").forward(request, response);
         }

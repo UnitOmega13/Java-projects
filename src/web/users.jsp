@@ -24,17 +24,8 @@
                 <td>${user.password}</td>
                 <td>${user.accessRole}</td>
                 <td>${user.id}</td>
-                <td>
-                    <form action="/admin/users/edit" method="get">
-                        <button type="submit">edit</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/admin/users/delete" method="get">
-                        <input type="hidden" name="userId" value="${user.id}">
-                        <button type="submit">delete</button>
-                    </form>
-                </td>
+                <td><a href="/admin/users/edit?id=${user.id}">Update</a></td>
+                <td><a href="/admin/users/delete?id=${user.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

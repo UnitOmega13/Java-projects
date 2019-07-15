@@ -4,13 +4,14 @@ import java.util.UUID;
 
 public class User {
 
-    private Long id;
+    private UUID id;
     private String email;
     private String login;
     private String password;
     private String accessRole;
 
-    public User(String email, String login, String password, String accessRole) {
+    public User(UUID id, String email, String login, String password, String accessRole) {
+        this.id = id;
         this.email = email;
         this.login = login;
         this.password = password;
@@ -29,11 +30,11 @@ public class User {
         return password;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

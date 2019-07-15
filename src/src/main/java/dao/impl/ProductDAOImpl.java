@@ -1,6 +1,8 @@
 package dao.impl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import dao.ProductDAO;
 import model.Product;
@@ -22,12 +24,14 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product getProduct(long productID) {
-        return DataBase.products.get(Math.toIntExact(productID));
+    public Optional<Product> getProduct(UUID productID) {
+        return DataBase.products.stream()
+                .filter(e -> e.getId().equals(productID))
+                .findFirst();
     }
 
     @Override
-    public void removeProduct(Product product) {
+    public void removeProduct(Optional<Product> product) {
         DataBase.products.remove(product);
         LOGGER.info("product " + product + " was deleted from the db");
     }

@@ -8,6 +8,7 @@ import model.User;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 public class UsersDAOImpl implements UsersDAO {
 
@@ -25,14 +26,14 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public Optional<User> getUserById(long userId) {
+    public Optional<User> getUserById(UUID userId) {
         return DataBase.users.stream()
                 .filter(e -> e.getId().equals(userId))
                 .findFirst();
     }
 
     @Override
-    public void removeUser(Long userId) {
+    public void removeUser(UUID userId) {
         Optional<User> optionalUser = getUserById(userId);
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
