@@ -1,20 +1,23 @@
 package model;
 
+import java.util.Objects;
+import java.util.UUID;
+
 public class Product {
 
-    private Long id;
+    private UUID id;
     private String name;
     private String description;
     private double price;
 
-    public Product(Long id, String name, String img, double price) {
+    public Product(UUID id, String name, String img, double price) {
         this.id = id;
         this.name = name;
         this.description = img;
         this.price = price;
     }
 
-    private long getId() {
+    private UUID getId() {
         return id;
     }
 
@@ -59,15 +62,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        long result;
-        long temp;
-        result = getId();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getImg() != null ? getImg().hashCode() : 0);
-        temp = Double.doubleToLongBits(getPrice());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result;
-        return Math.toIntExact(result);
+        return Objects.hash(id, name, description, price);
     }
 
     @Override

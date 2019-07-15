@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 @WebServlet(value = "/new_product")
 public class ProductRegistrationServlet extends HttpServlet {
 
     private static final ProductService PRODUCT_SERVICE = ProductServiceFactory.getInstance();
-    private Long id = (long) DataBase.products.size() + 1;
+    private UUID id = UUID.randomUUID();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -2,15 +2,16 @@ package model;
 
 import javax.persistence.Table;
 import javax.persistence.Entity;
+import java.util.UUID;
 
 public class User {
 
-    private Long id;
+    private UUID id;
     private String email;
     private String login;
     private String password;
 
-    public User(Long id, String login,String email, String password) {
+    public User(UUID id, String login,String email, String password) {
         this.id = id;
         this.login = login;
         this.email = email;
@@ -29,7 +30,7 @@ public class User {
         return password;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
