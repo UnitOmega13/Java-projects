@@ -7,6 +7,7 @@ import service.UserService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class UserServiceInpl implements UserService {
 
@@ -23,7 +24,7 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(long userID) {
+    public Optional<User> getUserById(UUID userID) {
         return usersDAO.getUserById(userID);
     }
 
@@ -33,7 +34,7 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public void removeUser(long userID) {
+    public void removeUser(UUID userID) {
         usersDAO.removeUser(userID);
     }
 }

@@ -10,15 +10,17 @@
 <body>
 <table border="1">
     <tr>
-        <th>Login</th>
-        <th>Password</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
     </tr>
-    <c:forEach items="${allProducts}" var="user">
+    <c:forEach items="${allProducts}" var="product">
         <tr>
-            <td>${user.login}</td>
-            <td>${user.password}</td>
-            <td><a href="users/edit?id=${user.id}">Update</a></td>
-            <td><a href="users/delete?id=${user.id}">Delete</a></td>
+            <td>${product.name}</td>
+            <td>${product.description}</td>
+            <td>${product.price}</td>
+            <td><a href="products/edit?id=${product.id}">Update</a></td>
+            <td><a href="products/delete?id=${product.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>

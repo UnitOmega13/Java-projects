@@ -13,6 +13,6 @@ public class AccessServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("accessDenied", "Not enough rights");
-        request.getRequestDispatcher("/users").forward(request, response);
+        request.getRequestDispatcher("/products").forward(request, response);
     }
 }

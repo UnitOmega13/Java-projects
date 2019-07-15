@@ -25,12 +25,11 @@
                 <td>${user.accessRole}</td>
                 <td>${user.id}</td>
                 <td>
-                    <form action="/users/edit" method="get">
-                        <button type="submit">edit</button>
-                    </form>
-                </td>
+                    <form action="/admin/users/edit" method="get">
+                        <input type="hidden" name="productId" value="${user.id}">
+
                 <td>
-                    <form action="/users/delete" method="get">
+                    <form action="/admin/users/delete" method="get">
                         <input type="hidden" name="userId" value="${user.id}">
                         <button type="submit">delete</button>
                     </form>

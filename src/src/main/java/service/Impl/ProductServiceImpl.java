@@ -6,6 +6,8 @@ import model.Product;
 import service.ProductService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -22,13 +24,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProduct(long productID) {
+    public Optional<Product> getProduct(UUID productID) {
         return productDAO.getProduct(productID);
     }
 
 
     @Override
-    public void removeProduct(long productID) {
+    public void removeProduct(UUID productID) {
         productDAO.removeProduct(getProduct(productID));
     }
 }

@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 @WebServlet(name = "NewUserServlet", value = "/admin/users/add")
 public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
+    private static UUID id = UUID.randomUUID();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,7 +26,7 @@ public class NewUserServlet extends HttpServlet {
         String password = request.getParameter("password");
         String reEnteredPassword = request.getParameter("repeatedPassword");
         if (password.equals(reEnteredPassword)) {
-            User user = new User(email, login, password, accessRole);
+            User user = new User(id, email, login, password, accessRole);
             userService.add(user);
             response.sendRedirect("/users");
         } else {
