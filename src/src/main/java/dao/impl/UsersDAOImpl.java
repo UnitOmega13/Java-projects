@@ -6,7 +6,7 @@ import model.User;
 
 import java.util.List;
 
-public class UsersDAOImpl implements UsersDAO<User> {
+public class UsersDAOImpl implements UsersDAO {
 
     @Override
     public void add(User user) {

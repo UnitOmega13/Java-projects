@@ -6,7 +6,7 @@ import dao.ProductDAO;
 import model.Product;
 import service.DataBase;
 
-public class ProductDAOImpl implements ProductDAO<Product> {
+public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void add(Product product) {
