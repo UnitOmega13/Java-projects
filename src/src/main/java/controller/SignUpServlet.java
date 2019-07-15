@@ -2,6 +2,7 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
+import service.DataBase;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,8 @@ import java.io.IOException;
 @WebServlet(value = "/registration")
 public class SignUpServlet extends HttpServlet {
 
-    private static final UserService USER_SERVICE = UserServiceFactory.getInstance();
+    private static final UserService userService = UserServiceFactory.getInstance();
+    private Long id = (long) DataBase.users.size() + 1;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +35,7 @@ public class SignUpServlet extends HttpServlet {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
         } else if (password.equals(repeatedPassword)) {
-            USER_SERVICE.add(new User(login, email, password));
+            userService.add(new User(id, login, email, password));
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {

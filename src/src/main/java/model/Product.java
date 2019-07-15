@@ -2,18 +2,19 @@ package model;
 
 public class Product {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String description;
     private double price;
 
-    public Product(String name, String img, double price) {
+    public Product(Long id, String name, String img, double price) {
+        this.id = id;
         this.name = name;
         this.description = img;
         this.price = price;
     }
 
-    private int getId() {
+    private long getId() {
         return id;
     }
 
@@ -58,7 +59,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        int result;
+        long result;
         long temp;
         result = getId();
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
@@ -66,7 +67,7 @@ public class Product {
         temp = Double.doubleToLongBits(getPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result;
-        return result;
+        return Math.toIntExact(result);
     }
 
     @Override

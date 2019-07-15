@@ -5,12 +5,13 @@ import javax.persistence.Entity;
 
 public class User {
 
-    private Integer id;
+    private Long id;
     private String email;
     private String login;
     private String password;
 
-    public User(String login,String email, String password) {
+    public User(Long id, String login,String email, String password) {
+        this.id = id;
         this.login = login;
         this.email = email;
         this.password = password;
@@ -28,7 +29,7 @@ public class User {
         return password;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserServiceInpl implements UserService {
 
-    private UsersDAO usersDAO = new UserDAOFactory.getInstance();
+    private UsersDAO usersDAO = UserDAOFactory.getInstance();
 
     @Override
     public void add(User user) {
