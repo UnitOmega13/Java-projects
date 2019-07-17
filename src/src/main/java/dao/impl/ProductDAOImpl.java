@@ -2,12 +2,11 @@ package dao.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import dao.ProductDAO;
 import model.Product;
 import org.apache.log4j.Logger;
-import service.DataBase;
+import storage.DataBase;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -24,15 +23,15 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Optional<Product> getProduct(UUID productID) {
+    public Optional<Product> getProduct(long productID) {
         return DataBase.products.stream()
-                .filter(e -> e.getId().equals(productID))
+                .filter(e -> e.getId() == (productID))
                 .findFirst();
     }
 
     @Override
     public void removeProduct(Optional<Product> product) {
         DataBase.products.remove(product);
-        LOGGER.info("product " + product + " was deleted from the db");
+        LOGGER.info("product " + product + " was deleted");
     }
 }

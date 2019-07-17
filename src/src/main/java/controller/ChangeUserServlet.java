@@ -22,7 +22,7 @@ public class ChangeUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UUID userId = UUID.fromString(request.getParameter("userId"));
+        Long userId = Long.valueOf(request.getParameter("userId"));
         String email = request.getParameter("email");
         String accessRole = request.getParameter("accessRole");
         String password = request.getParameter("password");
@@ -50,7 +50,7 @@ public class ChangeUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UUID userId = UUID.fromString(request.getParameter("userId"));
+        Long userId = Long.valueOf(request.getParameter("userId"));
         Optional<User> optionalUser = userService.getUserById(userId);
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
@@ -59,7 +59,7 @@ public class ChangeUserServlet extends HttpServlet {
         }
     }
 
-    private void setUserAttributes(UUID userId, String email, String accessRole,
+    private void setUserAttributes(Long userId, String email, String accessRole,
                                    HttpServletRequest request) {
         request.setAttribute("userId", userId);
         request.setAttribute("email", email);

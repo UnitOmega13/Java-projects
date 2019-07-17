@@ -18,7 +18,7 @@ public class RemoveProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        UUID productId = UUID.fromString(request.getParameter("productId"));
+        long productId = Long.valueOf(request.getParameter("productId"));
         productService.removeProduct(productId);
         request.getRequestDispatcher("/products").forward(request, response);
     }

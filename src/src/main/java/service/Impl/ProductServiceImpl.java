@@ -7,7 +7,6 @@ import service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -24,13 +23,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<Product> getProduct(UUID productID) {
+    public Optional<Product> getProduct(long productID) {
         return productDAO.getProduct(productID);
     }
 
 
     @Override
-    public void removeProduct(UUID productID) {
+    public void removeProduct(long productID) {
         productDAO.removeProduct(getProduct(productID));
     }
 }

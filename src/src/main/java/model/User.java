@@ -1,21 +1,32 @@
 package model;
 
+import utils.DigitalCodeGenerator;
+
 import java.util.UUID;
 
 public class User {
 
-    private UUID id;
+    private Long id;
     private String email;
     private String login;
     private String password;
+    private String code;
     private String accessRole;
 
-    public User(UUID id, String email, String login, String password, String accessRole) {
+    public User(Long id, String email, String login, String password, String accessRole) {
         this.id = id;
         this.email = email;
         this.login = login;
         this.password = password;
         this.accessRole = accessRole;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode() {
+        this.code = DigitalCodeGenerator.generateCode();
     }
 
     public String getLogin() {
@@ -30,11 +41,11 @@ public class User {
         return password;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -57,6 +68,4 @@ public class User {
     public void setAccessRole(String accessRole) {
         this.accessRole = accessRole;
     }
-
-
 }

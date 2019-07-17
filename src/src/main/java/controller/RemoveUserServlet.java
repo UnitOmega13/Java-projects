@@ -18,7 +18,7 @@ public class RemoveUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        UUID userId = UUID.fromString(request.getParameter("userId"));
+        long userId = Long.valueOf(request.getParameter("userId"));
         userService.removeUser(userId);
         request.getRequestDispatcher("/admin/users").forward(request, response);
     }

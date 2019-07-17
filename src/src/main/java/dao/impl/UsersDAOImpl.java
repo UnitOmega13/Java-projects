@@ -2,7 +2,7 @@ package dao.impl;
 
 import dao.UsersDAO;
 import org.apache.log4j.Logger;
-import service.DataBase;
+import storage.DataBase;
 import model.User;
 
 import java.util.List;
@@ -26,14 +26,14 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public Optional<User> getUserById(UUID userId) {
+    public Optional<User> getUserById(long userId) {
         return DataBase.users.stream()
-                .filter(e -> e.getId().equals(userId))
+                .filter(e -> e.getId() == (userId))
                 .findFirst();
     }
 
     @Override
-    public void removeUser(UUID userId) {
+    public void removeUser(long userId) {
         Optional<User> optionalUser = getUserById(userId);
         if (optionalUser.isPresent()){
             User user = optionalUser.get();

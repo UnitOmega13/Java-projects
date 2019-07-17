@@ -3,6 +3,7 @@ package controller;
 import factories.ProductServiceFactory;
 import model.Product;
 import service.ProductService;
+import utils.IdGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.UUID;
 
 @WebServlet(value = "/new_product")
 public class ProductRegistrationServlet extends HttpServlet {
 
     private static final ProductService PRODUCT_SERVICE = ProductServiceFactory.getInstance();
-    private static UUID id = UUID.randomUUID();
+    private static long id = IdGenerator.generateId();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +29,7 @@ public class ProductRegistrationServlet extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
-        double price = -1;
+        Double price = (double) -1;
         if (!request.getParameter("price").isEmpty()) {
             price = Double.valueOf(request.getParameter("price"));
         }

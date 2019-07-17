@@ -24,7 +24,7 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(UUID userID) {
+    public Optional<User> getUserById(long userID) {
         return usersDAO.getUserById(userID);
     }
 
@@ -34,7 +34,7 @@ public class UserServiceInpl implements UserService {
     }
 
     @Override
-    public void removeUser(UUID userID) {
+    public void removeUser(long userID) {
         usersDAO.removeUser(userID);
     }
 }

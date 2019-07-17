@@ -1,23 +1,22 @@
 package model;
 
 import java.util.Objects;
-import java.util.UUID;
+import java.util.Optional;
 
 public class Product {
-
-    private UUID id;
+    private Long id;
     private String name;
     private String description;
-    private double price;
+    private Double price;
 
-    public Product(UUID id, String name, String img, double price) {
+    public Product(Long id, String name, String description, Double price) {
         this.id = id;
         this.name = name;
-        this.description = img;
+        this.description = description;
         this.price = price;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
@@ -27,10 +26,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private String getImg() {
-        return description;
     }
 
     public double getPrice() {
@@ -45,19 +40,19 @@ public class Product {
         this.description = description;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Product product = (Product) object;
-        if (getId() != product.getId()) return false;
-        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
-        if (getName() != null ? !getName().equals(product.getName()) : product.getName() != null) return false;
-        return getImg() != null ? getImg().equals(product.getImg()) : product.getImg() == null;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(description, product.description) &&
+                Objects.equals(price, product.price);
     }
 
     @Override

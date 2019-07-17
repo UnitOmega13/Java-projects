@@ -10,7 +10,7 @@ public interface UserService {
 
     void add(User user);
     List<User> getAll();
-    Optional<User> getUserById(UUID userID);
+    Optional<User> getUserById(long userID);
     Optional<User> getUserByEmail(String email);
-    void removeUser(UUID userID);
+    void removeUser(long userID);
 }

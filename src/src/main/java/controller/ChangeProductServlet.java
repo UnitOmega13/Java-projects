@@ -2,7 +2,6 @@ package controller;
 
 import factories.ProductServiceFactory;
 import model.Product;
-import model.User;
 import service.ProductService;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 @WebServlet(value = "/products/edit")
@@ -23,7 +21,7 @@ public class ChangeProductServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UUID productId = UUID.fromString(request.getParameter("id"));
+        Long productId = Long.valueOf(request.getParameter("id"));
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Double price = Double.valueOf(request.getParameter("price"));
@@ -47,7 +45,7 @@ public class ChangeProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UUID productId = UUID.fromString(request.getParameter("id"));
+        Long productId = Long.valueOf(request.getParameter("id"));
         Optional<Product> optionalProduct = productService.getProduct(productId);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();

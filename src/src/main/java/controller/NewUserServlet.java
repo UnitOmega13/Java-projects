@@ -3,6 +3,7 @@ package controller;
 import factories.UserServiceFactory;
 import model.User;
 import service.UserService;
+import utils.IdGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import java.util.UUID;
 public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
-    private static UUID id = UUID.randomUUID();
+    private static long id = IdGenerator.generateId();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
