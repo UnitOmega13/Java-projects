@@ -25,46 +25,31 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public Optional<Basket> getUserBasket(User user) {
-        return getAllBaskets().stream()
-                .filter(basket -> basket.getUser() == user)
-                .findFirst();
+        return basketDAO.getUserBasket(user);
     }
 
     @Override
     public void addProductToBasket(User user, Optional<Product> product) {
-        if (getUserBasket(user).isPresent()){
-            getUserBasket(user).get().setProducts(product);
-        }
+        basketDAO.addProductToBasket(user, product);
     }
 
     @Override
     public void clearBasket(User user) {
-        if (getUserBasket(user).isPresent()){
-            getUserBasket(user).get().resetBasket();
-        }
+        basketDAO.clearBasket(user);
     }
 
     @Override
     public int getSizeOfBasket(User user) {
-        if (getUserBasket(user).isPresent()) {
-            return getUserBasket(user).get().getSizeOfBasket();
-        }
-        return 0;
+        return basketDAO.getSizeOfBasket(user);
     }
 
     @Override
     public boolean checkUserBasket(User user) {
-        return getUserBasket(user).isPresent();
+        return basketDAO.checkUserBasket(user);
     }
 
     @Override
     public double getPriceOfOrder(User user) {
-        if (getUserBasket(user).isPresent()){
-            return getUserBasket(user).get().getProducts()
-                    .stream()
-                    .mapToDouble(Product::getPrice)
-                    .sum();
-        }
-        return 0;
+        return basketDAO.getPriceOfOrder(user);
     }
 }

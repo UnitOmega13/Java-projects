@@ -5,7 +5,7 @@ import factories.OrderDetailsDAOFactory;
 import model.OrderDetails;
 import service.OrderService;
 
-public class OrserDetailsServiceImpl implements OrderService {
+public class OrderDetailsServiceImpl implements OrderService {
     private static final OrderDetailsDAO orderDetailsDAO = OrderDetailsDAOFactory.getInstance();
 
     @Override

@@ -2,8 +2,6 @@ package model;
 
 import utils.DigitalCodeGenerator;
 
-import java.util.UUID;
-
 public class User {
 
     private Long id;
