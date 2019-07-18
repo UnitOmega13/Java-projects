@@ -10,8 +10,8 @@ public interface UsersDAO{
 
     void add(User user);
     List<User> getAll();
-    Optional<User> getUserById(long userId);
-    void removeUser(long userId);
+    Optional<User> getUserById(Long userId);
+    void removeUser(Long userId);
     Optional<User> getUserByEmail(String email);
 
 }

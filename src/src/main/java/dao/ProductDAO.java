@@ -9,6 +9,6 @@ public interface ProductDAO {
 
     void add(Product product);
     List<Product> getAll();
-    Optional<Product> getProduct(long productID);
+    Optional<Product> getProduct(Long productID);
     void removeProduct(Optional<Product> product);
 }
