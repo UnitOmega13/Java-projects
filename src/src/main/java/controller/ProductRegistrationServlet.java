@@ -15,8 +15,8 @@ import java.io.IOException;
 @WebServlet(value = "/new_product")
 public class ProductRegistrationServlet extends HttpServlet {
 
-    private static final ProductService PRODUCT_SERVICE = ProductServiceFactory.getInstance();
-    private static long id = IdGenerator.generateId();
+    private static final ProductService productService = ProductServiceFactory.getInstance();
+    private static Long id = IdGenerator.generateId();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +37,7 @@ public class ProductRegistrationServlet extends HttpServlet {
             request.setAttribute("isEmpty", "All fields must be filled and price must be biggest than 0.");
             request.getServletContext().getRequestDispatcher("/new_product.jsp").forward(request, response);
         } else {
-            PRODUCT_SERVICE.add(new Product(id, name, description, price));
+            productService.add(new Product(id, name, description, price));
             response.setStatus(HttpServletResponse.SC_OK);
             request.getRequestDispatcher("/products.jsp").forward(request, response);
         }

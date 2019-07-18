@@ -25,7 +25,7 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public Optional<Product> getProduct(long productID) {
         return DataBase.products.stream()
-                .filter(e -> e.getId() == (productID))
+                .filter(e -> e.getId().equals(productID))
                 .findFirst();
     }
 

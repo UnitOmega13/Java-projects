@@ -17,7 +17,7 @@ import java.util.UUID;
 public class SignUpServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
-    private static long id = IdGenerator.generateId();
+    private static Long id = IdGenerator.generateId();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

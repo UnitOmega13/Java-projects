@@ -14,7 +14,6 @@ import java.util.List;
 
 @WebServlet(value = "/admin/users")
 public class UsersServlet extends HttpServlet {
-
     private static final UserService userService = UserServiceFactory.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -28,7 +28,7 @@ public class UsersDAOImpl implements UsersDAO {
     @Override
     public Optional<User> getUserById(long userId) {
         return DataBase.users.stream()
-                .filter(e -> e.getId() == (userId))
+                .filter(e -> e.getId().equals(userId))
                 .findFirst();
     }
 

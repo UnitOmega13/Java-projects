@@ -17,7 +17,7 @@ import java.util.UUID;
 public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
-    private static long id = IdGenerator.generateId();
+    private static Long id = IdGenerator.generateId();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
