@@ -1,6 +1,7 @@
 package dao.impl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import dao.ProductDAO;
@@ -25,7 +26,7 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public Optional<Product> getProduct(long productID) {
         return DataBase.products.stream()
-                .filter(e -> e.getId().equals(productID))
+                .filter(e -> Objects.equals(e.getId(), productID))
                 .findFirst();
     }
 

@@ -5,10 +5,7 @@ import org.apache.log4j.Logger;
 import storage.DataBase;
 import model.User;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class UsersDAOImpl implements UsersDAO {
 
@@ -28,7 +25,7 @@ public class UsersDAOImpl implements UsersDAO {
     @Override
     public Optional<User> getUserById(long userId) {
         return DataBase.users.stream()
-                .filter(e -> e.getId().equals(userId))
+                .filter(e -> Objects.equals(e.getId(), userId))
                 .findFirst();
     }
 
