@@ -29,7 +29,6 @@ public class OrderServlet extends HttpServlet {
         if (basketService.getUserBasket(user).isPresent()){
             List<Optional<Product>> allProductInBasket = basketService.getUserBasket(user).get().getProducts();
             request.setAttribute("allProductInBasket", allProductInBasket);
-            request.setAttribute("orderSum", basketService.getPriceOfOrder(user));
         }
         request.getRequestDispatcher("/order.jsp").forward(request, response);
     }

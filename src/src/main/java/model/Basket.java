@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Basket {
     private User user;
-    private List<Optional<Product>> products = new ArrayList<Optional<Product>>();
+    private List<Product> products = new ArrayList<>();
 
     public Basket(User user) {
         this.user = user;
@@ -22,11 +22,11 @@ public class Basket {
         this.user = user;
     }
 
-    public List<Optional<Product>> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Optional<Product> product) {
+    public void setProducts(Product product) {
         products.add(product);
     }
 
@@ -35,7 +35,7 @@ public class Basket {
     }
 
     public void resetBasket(){
-        products = new ArrayList<Optional<Product>>();
+        products = new ArrayList<>();
     }
 
     @Override

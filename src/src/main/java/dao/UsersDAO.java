@@ -5,7 +5,7 @@ import model.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsersDAO{
+public interface UsersDAO {
 
     void add(User user);
     List<User> getAll();

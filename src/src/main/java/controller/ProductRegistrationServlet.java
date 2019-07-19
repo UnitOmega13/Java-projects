@@ -16,8 +16,6 @@ import java.io.IOException;
 public class ProductRegistrationServlet extends HttpServlet {
 
     private static final ProductService productService = ProductServiceFactory.getInstance();
-    private static Long id = IdGenerator.generateId();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,6 +25,7 @@ public class ProductRegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Long id = IdGenerator.generateId();
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Double price = (double) -1;

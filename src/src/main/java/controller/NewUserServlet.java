@@ -16,10 +16,10 @@ import java.io.IOException;
 public class NewUserServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
-    private static Long id = IdGenerator.generateId();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Long id = IdGenerator.generateId();
         String login = request.getParameter("login");
         String email = request.getParameter("email");
         String accessRole = request.getParameter("accessRole");

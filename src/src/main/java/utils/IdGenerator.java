@@ -1,7 +1,8 @@
 package utils;
 
 public class IdGenerator {
+    private static Long generatedID;
     public static long generateId(){
-        return (long) (Math.random() * 1000000);
+        return generatedID++;
     }
 }

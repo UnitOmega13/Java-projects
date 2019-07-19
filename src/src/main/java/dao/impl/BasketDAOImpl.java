@@ -32,7 +32,7 @@ public class BasketDAOImpl implements BasketDAO {
     }
 
     @Override
-    public void addProductToBasket(User user, Optional<Product> product) {
+    public void addProductToBasket(User user, Product product) {
         if (getUserBasket(user).isPresent()){
             getUserBasket(user).get().setProducts(product);
         }

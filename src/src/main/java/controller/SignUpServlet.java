@@ -16,7 +16,6 @@ import java.io.IOException;
 public class SignUpServlet extends HttpServlet {
 
     private static final UserService userService = UserServiceFactory.getInstance();
-    private static Long id = IdGenerator.generateId();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,6 +26,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        Long id = IdGenerator.generateId();
         String login = req.getParameter("login");
         String email = req.getParameter("email");
         String password = req.getParameter("password");

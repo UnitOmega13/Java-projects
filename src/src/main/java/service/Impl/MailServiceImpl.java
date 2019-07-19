@@ -3,6 +3,7 @@ package service.Impl;
 import factories.BasketServiceFactory;
 import model.OrderDetails;
 import model.User;
+import org.apache.log4j.Logger;
 import service.BasketService;
 import service.MailService;
 
@@ -21,14 +22,15 @@ public class MailServiceImpl implements MailService {
     private static final BasketService basketService = BasketServiceFactory.getInstance();
     private static final String userNmae = "testu0513@gmail.com";
     private static final String password = "490401Neko";
+    private static final Logger logger = Logger.getLogger(MailServiceImpl.class);
 
     private Properties getProperties() {
-        Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true");
-        return prop;
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        return properties;
     }
 
     private Session getSession() {
@@ -56,7 +58,7 @@ public class MailServiceImpl implements MailService {
             message.setText(user.getCode());
             Transport.send(message);
         } catch (MessagingException e) {
-            e.printStackTrace();
+            logger.error("Send Code ERROR!!!");
         }
     }
 
@@ -76,7 +78,7 @@ public class MailServiceImpl implements MailService {
                     "\n" + order.toString());
             Transport.send(message);
         } catch (MessagingException e) {
-            e.printStackTrace();
+
         }
     }
 }
