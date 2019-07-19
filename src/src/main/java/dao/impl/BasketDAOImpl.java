@@ -57,15 +57,4 @@ public class BasketDAOImpl implements BasketDAO {
     public boolean checkUserBasket(User user) {
         return getUserBasket(user).isPresent();
     }
-
-    @Override
-    public double getPriceOfOrder(User user) {
-        if (getUserBasket(user).isPresent()){
-            return getUserBasket(user).get().getProducts()
-                    .stream()
-                    .mapToDouble(Product::getPrice)
-                    .sum();
-        }
-        return 0;
-    }
 }

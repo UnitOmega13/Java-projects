@@ -47,9 +47,4 @@ public class BasketServiceImpl implements BasketService {
     public boolean checkUserBasket(User user) {
         return basketDAO.checkUserBasket(user);
     }
-
-    @Override
-    public double getPriceOfOrder(User user) {
-        return basketDAO.getPriceOfOrder(user);
-    }
 }

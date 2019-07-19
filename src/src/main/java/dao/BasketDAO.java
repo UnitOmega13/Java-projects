@@ -15,5 +15,4 @@ public interface BasketDAO {
     void clearBasket(User user);
     int getSizeOfBasket(User user);
     boolean checkUserBasket(User user);
-    double getPriceOfOrder(User user);
 }
