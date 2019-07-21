@@ -12,12 +12,12 @@ import java.util.Optional;
 
 public class UsersDAOImpl implements UsersDAO {
 
-    private static final Logger LOGGER = Logger.getLogger(DataBase.class);
+    private static final Logger logger = Logger.getLogger(DataBase.class);
 
     @Override
     public void add(User user) {
         DataBase.users.add(user);
-        LOGGER.info("user " + user + " added");
+        logger.info("user " + user + " added");
     }
 
     @Override
@@ -38,9 +38,9 @@ public class UsersDAOImpl implements UsersDAO {
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
             DataBase.users.remove(user);
-            LOGGER.info("user " + user + " deleted");
+            logger.info("user " + user + " deleted");
         } else {
-            LOGGER.warn("Incorrect userId was inputted");
+            logger.warn("Incorrect userId was inputted");
             throw new NoSuchElementException("User " + userId + " does not exist");
         }
     }
@@ -50,5 +50,10 @@ public class UsersDAOImpl implements UsersDAO {
         return DataBase.users.stream()
                 .filter(e -> e.getEmail().equals(email))
                 .findFirst();
+    }
+
+    @Override
+    public void updateUser(User oldUser, User newUser) {
+
     }
 }

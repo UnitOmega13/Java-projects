@@ -31,8 +31,13 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void removeProduct(Optional<Product> product) {
-        DataBase.products.remove(product);
-        LOGGER.info("product " + product + " was deleted");
+    public void removeProduct(Long productID) {
+        DataBase.products.remove(getProduct(productID));
+        LOGGER.info("product " + productID + " was deleted");
+    }
+
+    @Override
+    public void updateProduct(Product oldProduct, Product newProduct) {
+
     }
 }

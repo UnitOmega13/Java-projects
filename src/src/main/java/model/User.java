@@ -11,6 +11,7 @@ public class User {
     private String code;
     private String accessRole;
 
+
     public User(Long id, String email, String login, String password, String accessRole) {
         this.id = id;
         this.email = email;
@@ -18,6 +19,7 @@ public class User {
         this.password = password;
         this.accessRole = accessRole;
     }
+
 
     public String getCode() {
         return code;
