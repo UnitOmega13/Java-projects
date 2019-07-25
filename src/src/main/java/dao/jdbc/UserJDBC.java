@@ -62,16 +62,17 @@ public class UserJDBC implements UsersDAO {
     }
 
     @Override
-    public void updateUser(User oldUser, User newUser) {
-        try (Connection connection = daoService.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_USER);
-            preparedStatement.setString(1, newUser.getEmail());
-            preparedStatement.setString(2, newUser.getPassword());
-            preparedStatement.setString(3, String.valueOf(oldUser.getId()));
-            preparedStatement.executeUpdate();
-            logger.info("User " + oldUser.getId() + " update in DB");
-        } catch (SQLException e) {
-            logger.error("Error when try update user in DB", e);
+    public void updateUser(User user) {
+        Optional<User> oldUserOptional = getUserById(user.getId());
+        if (oldUserOptional.isPresent()) {
+            User oldUser = oldUserOptional.get();
+            oldUser.setLogin(user.getLogin());
+            oldUser.setEmail(user.getEmail());
+            oldUser.setPassword(user.getPassword());
+            oldUser.setAccessRole(user.getAccessRole());
+            logger.info(oldUser + " was updated");
+        } else {
+            logger.error("Error: user not found!");
         }
     }
 

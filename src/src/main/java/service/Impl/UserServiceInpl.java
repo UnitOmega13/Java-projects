@@ -36,4 +36,9 @@ public class UserServiceInpl implements UserService {
     public void removeUser(long userID) {
         usersDAO.removeUser(userID);
     }
+
+    @Override
+    public void update(User user) {
+        usersDAO.updateUser(user);
+    }
 }

@@ -2,6 +2,7 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import service.UserService;
 
@@ -23,6 +24,7 @@ public class ChangeUserServlet extends HttpServlet {
             throws ServletException, IOException {
         Long userId = Long.valueOf(request.getParameter("userId"));
         String email = request.getParameter("email");
+        String login = request.getParameter("login");
         String accessRole = request.getParameter("accessRole");
         String password = request.getParameter("password");
         String reEnteredPassword = request.getParameter("repeatedPassword");
@@ -30,10 +32,10 @@ public class ChangeUserServlet extends HttpServlet {
         if (optionalUser.isPresent() &&
                 password.equals(reEnteredPassword) &&
                 !password.isEmpty()) {
-            User user = optionalUser.get();
-            user.setEmail(email);
-            user.setAccessRole(accessRole);
-            user.setPassword(password);
+            String encryptedPassword = DigestUtils.sha256Hex(password);
+            User user = new User(userId, login, email, encryptedPassword, accessRole);
+            userService.update(user);
+            response.sendRedirect("/admin/users");
             LOGGER.info("user " + user + " was edited");
             response.sendRedirect("/admin/users");
         } else if (!optionalUser.isPresent()) {

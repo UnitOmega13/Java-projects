@@ -4,6 +4,7 @@ import factories.UserServiceFactory;
 import model.User;
 import service.UserService;
 import utils.IdGenerator;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,8 @@ public class SignUpServlet extends HttpServlet {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
         } else if (password.equals(repeatedPassword)) {
-            userService.add(new User(id, email, login, password, accessRole));
+            String encryptedPassword = DigestUtils.sha256Hex(password);
+            User user = new User(id, email, login, encryptedPassword, accessRole);
             resp.setStatus(HttpServletResponse.SC_OK);
             req.getRequestDispatcher("/users.jsp").forward(req, resp);
         } else {

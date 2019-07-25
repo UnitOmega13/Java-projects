@@ -2,6 +2,7 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import service.UserService;
 
@@ -24,9 +25,9 @@ public class MainPageServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String encryptedPassword = DigestUtils.sha256Hex(request.getParameter("password"));
         Optional<User> optionalUser = userService.getUserByEmail(email);
-        if (optionalUser.isPresent() && passwordCheck(password, optionalUser.get())) {
+        if (optionalUser.isPresent() && passwordCheck(encryptedPassword, optionalUser.get())) {
             session.setAttribute("user", optionalUser.get());
             if (optionalUser.get().getAccessRole().equals("admin")){
                 response.sendRedirect("/admin/users");
