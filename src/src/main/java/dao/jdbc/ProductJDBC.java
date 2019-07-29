@@ -3,7 +3,7 @@ package dao.jdbc;
 import dao.ProductDAO;
 import model.Product;
 import org.apache.log4j.Logger;
-import utils.JDBCService;
+import utils.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class ProductJDBC implements ProductDAO {
     private static final Logger logger = Logger.getLogger(ProductJDBC.class);
-    private static final JDBCService jdbcService = new JDBCService();
+    private static final JDBCUtil JDBC_UTIL = new JDBCUtil();
     private static final String SQL_ADD_PRODUCT = "INSERT INTO products (product_name, " +
             "description, price) VALUES (?, ?, ?)";
     private static final String SQL_DELETE_PRODUCT = "DELETE FROM products WHERE id = (?)";
@@ -27,7 +27,7 @@ public class ProductJDBC implements ProductDAO {
 
     @Override
     public void add(Product product) {
-        try (Connection connection = jdbcService.getConnection()) {
+        try (Connection connection = JDBC_UTIL.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_PRODUCT);
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getDescription());
@@ -42,7 +42,7 @@ public class ProductJDBC implements ProductDAO {
     @Override
     public List<Product> getAll() {
         List<Product> products = new ArrayList<>();
-        try (Connection connection = jdbcService.getConnection()) {
+        try (Connection connection = JDBC_UTIL.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ALL_PRODUCTS);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -61,7 +61,7 @@ public class ProductJDBC implements ProductDAO {
 
     @Override
     public Optional<Product> getProduct(Long productID) {
-        try (Connection connection = jdbcService.getConnection()) {
+        try (Connection connection = JDBC_UTIL.getConnection()) {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(SQL_GET_PRODUCT_BY_ID);
             preparedStatement.setString(1, String.valueOf(productID));
@@ -88,7 +88,7 @@ public class ProductJDBC implements ProductDAO {
 
     @Override
     public void removeProduct(Long productID) {
-        try (Connection connection = jdbcService.getConnection()) {
+        try (Connection connection = JDBC_UTIL.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_PRODUCT);
             preparedStatement.setString(1, String.valueOf(productID));
             preparedStatement.executeUpdate();
@@ -100,7 +100,7 @@ public class ProductJDBC implements ProductDAO {
 
     @Override
     public void updateProduct(Product oldProduct, Product newProduct) {
-        try (Connection connection = jdbcService.getConnection()) {
+        try (Connection connection = JDBC_UTIL.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_PRODUCT);
             preparedStatement.setString(1, newProduct.getName());
             preparedStatement.setString(2, newProduct.getDescription());

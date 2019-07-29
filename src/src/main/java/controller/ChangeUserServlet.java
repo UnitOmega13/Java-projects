@@ -22,32 +22,20 @@ public class ChangeUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Long userId = Long.valueOf(request.getParameter("userId"));
-        String email = request.getParameter("email");
-        String login = request.getParameter("login");
-        String accessRole = request.getParameter("accessRole");
-        String password = request.getParameter("password");
-        String reEnteredPassword = request.getParameter("repeatedPassword");
-        Optional<User> optionalUser = userService.getUserById(userId);
-        if (optionalUser.isPresent() &&
-                password.equals(reEnteredPassword) &&
-                !password.isEmpty()) {
-            String encryptedPassword = DigestUtils.sha256Hex(password);
-            User user = new User(userId, login, email, encryptedPassword, accessRole);
-            userService.update(user);
-            response.sendRedirect("/admin/users");
-            LOGGER.info("user " + user + " was edited");
-            response.sendRedirect("/admin/users");
-        } else if (!optionalUser.isPresent()) {
-            request.setAttribute("error", "No such user in data base");
-            setUserAttributes(userId, email, accessRole, request);
-            request.getRequestDispatcher("/registration.jsp").forward(request, response);
-        } else {
-            request.setAttribute("error", "Your passwords are incorrect");
-            setUserAttributes(userId, email, accessRole, request);
+        long productId = Long.parseLong(request.getParameter("productId"));
+        request.setAttribute("userId", productId);
+        if (userService.getUserById(productId).isPresent()) {
+            request.setAttribute("email",
+                    userService.getUserById(productId).get().getEmail());
+            request.setAttribute("login",
+                    userService.getUserById(productId).get().getLogin());
+            request.setAttribute("password",
+                    userService.getUserById(productId).get().getPassword());
+            request.setAttribute("role",
+                    userService.getUserById(productId).get().getAccessRole());
+        }
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

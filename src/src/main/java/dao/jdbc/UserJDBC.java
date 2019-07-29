@@ -3,7 +3,7 @@ package dao.jdbc;
 import dao.UsersDAO;
 import model.User;
 import org.apache.log4j.Logger;
-import utils.JDBCService;
+import utils.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class UserJDBC implements UsersDAO {
     private static final Logger logger = Logger.getLogger(UserJDBC.class);
-    private static final JDBCService daoService = new JDBCService();
+    private static final JDBCUtil daoService = new JDBCUtil();
     private static final String SQL_ADD_USER = "INSERT INTO users (email, password, role) " +
             "VALUES (?, ?, ?)";
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE id = (?)";

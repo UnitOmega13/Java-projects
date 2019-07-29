@@ -3,7 +3,7 @@ package dao.jdbc;
 import dao.OrderDetailsDAO;
 import model.OrderDetails;
 import org.apache.log4j.Logger;
-import utils.JDBCService;
+import utils.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class OrderJDBC implements OrderDetailsDAO {
     private static final Logger logger = Logger.getLogger(ProductJDBC.class);
-    private static final JDBCService daoService = new JDBCService();
+    private static final JDBCUtil daoService = new JDBCUtil();
     private static final String SQL_ADD_ORDER = "INSERT INTO orders (first_name, " +
             "last_name, email, street, country, city, phone_number) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?)";

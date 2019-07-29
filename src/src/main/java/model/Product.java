@@ -1,13 +1,32 @@
 package model;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productId")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
     private Double price;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products",
+            cascade = {CascadeType.MERGE})
+    private List<Basket> basketList;
+
+    public Product () {}
 
     public Product(Long id, String name, String description, Double price) {
         this.id = id;
@@ -16,8 +35,12 @@ public class Product {
         this.price = price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,10 +51,6 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -40,8 +59,20 @@ public class Product {
         this.description = description;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<Basket> getBasketList() {
+        return basketList;
+    }
+
+    public void setBasketList(List<Basket> basketList) {
+        this.basketList = basketList;
     }
 
     @Override

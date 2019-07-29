@@ -1,6 +1,7 @@
 package factories;
 
 import dao.BasketDAO;
+import dao.hibernate.BasketDaoHibernate;
 import dao.impl.BasketDAOImpl;
 
 public class BasketDAOFactory {
@@ -11,7 +12,7 @@ public class BasketDAOFactory {
 
     public static synchronized BasketDAO getInstance() {
         if (instance == null) {
-            instance = new BasketDAOImpl();
+            instance = new BasketDaoHibernate();
         }
         return instance;
     }

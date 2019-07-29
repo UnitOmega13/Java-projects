@@ -21,26 +21,17 @@ public class ChangeProductServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Long productId = Long.valueOf(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
-        Double price = Double.valueOf(request.getParameter("price"));
-        Optional<Product> optionalProduct = productService.getProduct(productId);
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            LOGGER.info("product " + product + " was edited in the db");
-            product.setName(name);
-            product.setDescription(description);
-            product.setPrice(price);
-            response.sendRedirect("/products");
-        }else {
-            request.setAttribute("error", "No such product.");
-            request.setAttribute("name", name);
-            request.setAttribute("description", description);
-            request.setAttribute("price", price);
-            request.setAttribute("action", "/product/add");
-            request.getRequestDispatcher("/new_product.jsp").forward(request, response);
+        long productId = Long.parseLong(request.getParameter("productId"));
+        request.setAttribute("productId", productId);
+        if (productService.getProduct(productId).isPresent()) {
+            request.setAttribute("name",
+                    productService.getProduct(productId).get().getName());
+            request.setAttribute("description",
+                    productService.getProduct(productId).get().getDescription());
+            request.setAttribute("price",
+                    productService.getProduct(productId).get().getPrice());
         }
+            request.getRequestDispatcher("/new_product.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

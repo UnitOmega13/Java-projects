@@ -1,6 +1,7 @@
 package factories;
 
 import dao.OrderDetailsDAO;
+import dao.hibernate.OrderDaoHibernate;
 import dao.impl.OrderDetailsDAOImpl;
 
 public class OrderDetailsDAOFactory {
@@ -11,7 +12,7 @@ public class OrderDetailsDAOFactory {
 
     public static synchronized OrderDetailsDAO getInstance() {
         if (instance == null) {
-            instance = new OrderDetailsDAOImpl();
+            instance = new OrderDaoHibernate();
         }
         return instance;
     }

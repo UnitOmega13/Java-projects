@@ -1,17 +1,39 @@
 package model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Arrays;
 
+@Entity
+@Table(name = "basket")
 public class Basket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "basketId")
+    private Long id;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
-    private List<Product> products = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
+    @JoinTable(name = "product_basket",
+            joinColumns = {@JoinColumn(name = "basketId")},
+            inverseJoinColumns = {@JoinColumn(name = "productId")})
+    private List<Product> products;
+
+    public Basket() {
+    }
 
     public Basket(User user) {
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -26,8 +48,8 @@ public class Basket {
         return products;
     }
 
-    public void setProducts(Product product) {
-        products.add(product);
+    public void setProducts(Product products) {
+        this.products = products;
     }
 
     public int getSizeOfBasket() {
@@ -39,20 +61,11 @@ public class Basket {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Basket basket = (Basket) o;
-        return Objects.equals(products, basket.products);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(products);
-    }
-
-    @Override
     public String toString() {
-        return Arrays.toString(products.toArray());
+        return "Basket{" +
+                "id = " + id +
+                ", user = " + user +
+                ", products = " + products +
+                '}';
     }
 }

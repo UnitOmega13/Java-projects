@@ -78,7 +78,7 @@ public class MailServiceImpl implements MailService {
                     "\n" + order.toString());
             Transport.send(message);
         } catch (MessagingException e) {
-
+            logger.error("Send order ERROR!!!");
         }
     }
 }
