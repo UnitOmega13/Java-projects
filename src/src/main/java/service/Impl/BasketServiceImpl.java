@@ -29,7 +29,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void addProductToBasket(User user, Optional<Product> product) {
+    public void addProductToBasket(User user, Product product) {
         basketDAO.addProductToBasket(user, product);
     }
 

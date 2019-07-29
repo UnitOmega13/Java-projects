@@ -23,7 +23,7 @@ public class BasketServlet  extends HttpServlet {
             throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         if (basketService.getUserBasket(user).isPresent()){
-            List<Optional<Product>> allProductInBasket = basketService.getUserBasket(user).get().getProducts();
+            List<Product> allProductInBasket = basketService.getUserBasket(user).get().getProducts();
             request.setAttribute("allProductInBasket", allProductInBasket);
         }
         request.getRequestDispatcher("/basket.jsp").forward(request, response);

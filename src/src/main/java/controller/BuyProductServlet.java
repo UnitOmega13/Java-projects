@@ -33,16 +33,4 @@ public class BuyProductServlet extends HttpServlet {
         request.setAttribute("sizeOfBasket", basketService.getSizeOfBasket(user));
         request.getRequestDispatcher("/user_products.jsp").forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Optional<Product> product = productService.getProduct(Long.valueOf(request.getParameter("productId")));
-        User user = (User) request.getSession().getAttribute("user");
-        basketService.addProductToBasket(user, product);
-        List<Product> allProduct = productService.getAll();
-        request.setAttribute("allProduct", allProduct);
-        request.setAttribute("sizeOfBasket", basketService.getSizeOfBasket(user));
-        request.getRequestDispatcher("/user_products.jsp").forward(request, response);
-    }
 }

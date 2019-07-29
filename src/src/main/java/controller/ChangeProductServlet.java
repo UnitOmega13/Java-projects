@@ -29,9 +29,7 @@ public class ChangeProductServlet extends HttpServlet {
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             LOGGER.info("product " + product + " was edited in the db");
-            product.setName(name);
-            product.setDescription(description);
-            product.setPrice(price);
+            productService.updateProduct(product, new Product(productId, name, description, price));
             response.sendRedirect("/products");
         }else {
             request.setAttribute("error", "No such product.");
