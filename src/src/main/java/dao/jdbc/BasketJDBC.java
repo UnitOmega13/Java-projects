@@ -17,7 +17,6 @@ import java.util.Optional;
 
 public class BasketJDBC implements BasketDAO {
     private static final Logger logger = Logger.getLogger(ProductJDBC.class);
-    private static final JDBCUtil JDBC_UTIL = new JDBCUtil();
     private static final String SQL_ADD_BASKET = "INSERT INTO basket (userID) VALUES (?)";
     private static final String SQL_ADD_PRODUCT_TO_BASKET = "INSERT INTO basket (userID,productID) VALUES (?, ?)";
     private static final String SQL_SIZE_BASKET = "SELECT COUNT(*) FROM basket WHERE userID = (?)";
@@ -31,7 +30,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public void createBasket(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_BASKET);
             preparedStatement.setString(1, String.valueOf(user.getId()));
             preparedStatement.executeUpdate();
@@ -48,7 +47,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public Optional<Basket> getUserBasket(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_BASKET_BY_USER);
             preparedStatement.setLong(1, user.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -70,7 +69,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public void addProductToBasket(User user, Product product) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_PRODUCT_TO_BASKET);
             preparedStatement.setString(1, String.valueOf(user.getId()));
             preparedStatement.setString(2, String.valueOf(product.getId()));
@@ -83,7 +82,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public void clearBasket(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_RESET_BASKET);
             preparedStatement.setLong(1, user.getId());
             preparedStatement.executeUpdate();
@@ -94,7 +93,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public int getSizeOfBasket(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_SIZE_BASKET);
             preparedStatement.setString(1, String.valueOf(user.getId()));
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -108,7 +107,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public boolean checkUserBasket(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_CHECK_BASKET);
             preparedStatement.setString(1, String.valueOf(user.getId()));
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -122,7 +121,7 @@ public class BasketJDBC implements BasketDAO {
 
     @Override
     public double getSumOfOrder(User user) {
-        try (Connection connection = JDBC_UTIL.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_SUM_OF_ORDER);
             preparedStatement.setString(1, String.valueOf(user.getId()));
             ResultSet resultSet = preparedStatement.executeQuery();

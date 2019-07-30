@@ -11,13 +11,12 @@ import java.sql.SQLException;
 
 public class OrderJDBC implements OrderDetailsDAO {
     private static final Logger logger = Logger.getLogger(ProductJDBC.class);
-    private static final JDBCUtil daoService = new JDBCUtil();
     private static final String SQL_ADD_ORDER = "INSERT INTO orders (first_name, " +
             "last_name, email, street, country, city, phone_number) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?)";
     @Override
     public void addOrder(OrderDetails orderDetails) {
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_ORDER);
             preparedStatement.setString(1, orderDetails.getName());
             preparedStatement.setString(2, orderDetails.getLastName());

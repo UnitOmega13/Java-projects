@@ -16,7 +16,6 @@ import java.util.Optional;
 
 public class UserJDBC implements UsersDAO {
     private static final Logger logger = Logger.getLogger(UserJDBC.class);
-    private static final JDBCUtil daoService = new JDBCUtil();
     private static final String SQL_ADD_USER = "INSERT INTO users (email, password, role) " +
             "VALUES (?, ?, ?)";
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE id = (?)";
@@ -28,7 +27,7 @@ public class UserJDBC implements UsersDAO {
 
     @Override
     public void add(User user) {
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_USER);
             preparedStatement.setString(1, user.getEmail());
             preparedStatement.setString(2, user.getPassword());
@@ -43,7 +42,7 @@ public class UserJDBC implements UsersDAO {
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ALL_USER);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -62,10 +61,10 @@ public class UserJDBC implements UsersDAO {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(User user, User oldUser) {
         Optional<User> oldUserOptional = getUserById(user.getId());
         if (oldUserOptional.isPresent()) {
-            User oldUser = oldUserOptional.get();
+            oldUser = oldUserOptional.get();
             oldUser.setLogin(user.getLogin());
             oldUser.setEmail(user.getEmail());
             oldUser.setPassword(user.getPassword());
@@ -78,7 +77,7 @@ public class UserJDBC implements UsersDAO {
 
     @Override
     public Optional<User> getUserById(Long userId) {
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_USER_BY_ID);
             preparedStatement.setLong(1, userId);
             return getUserFromResultSet(preparedStatement.executeQuery());
@@ -105,7 +104,7 @@ public class UserJDBC implements UsersDAO {
 
     @Override
     public void removeUser(Long userId) {
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_USER);
             preparedStatement.setString(1, String.valueOf(userId));
             preparedStatement.executeUpdate();
@@ -117,7 +116,7 @@ public class UserJDBC implements UsersDAO {
 
     @Override
     public Optional<User> getUserByEmail(String email) {
-        try (Connection connection = daoService.getConnection()) {
+        try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(SQL_GET_USER_BY_EMAIL);
             preparedStatement.setString(1, email);

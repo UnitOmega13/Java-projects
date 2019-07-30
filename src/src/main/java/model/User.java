@@ -2,7 +2,12 @@ package model;
 
 import utils.DigitalCodeGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "users")
@@ -40,6 +45,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.accessRole = accessRole;
+    }
+
+    public User(long id, String email, String login, String password, String role) {
+        this.id = id;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.accessRole = role;
     }
 
     public Long getId() {
