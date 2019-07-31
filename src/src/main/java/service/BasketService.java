@@ -11,7 +11,7 @@ public interface BasketService {
     List<Basket> getAllBaskets();
     void createBasket(User user);
     Optional<Basket> getUserBasket(User user);
-    void addProductToBasket(User user, Optional<Product> product);
+    void addProductToBasket(User user, Product product);
     void clearBasket(User user);
     int getSizeOfBasket(User user);
     boolean checkUserBasket(User user);

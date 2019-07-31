@@ -82,7 +82,7 @@ public class UserDaoHibernate implements UsersDAO {
     }
 
     @Override
-    public void updateUser(User newUser, User oldUser) {
+    public void updateUser(User newUser) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();

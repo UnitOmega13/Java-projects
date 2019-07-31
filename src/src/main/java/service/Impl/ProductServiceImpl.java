@@ -30,6 +30,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void removeProduct(long productID) {
-        productDAO.removeProduct(getProduct(productID));
+        productDAO.removeProduct(productID);
     }
 }

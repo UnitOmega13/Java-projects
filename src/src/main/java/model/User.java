@@ -32,6 +32,9 @@ public class User {
     @Column(name = "accessRole")
     private String accessRole;
 
+    @Column (name = "salt")
+    private String salt;
+
     public User () {}
 
     public User(String email, String password, String accessRole) {
@@ -53,6 +56,14 @@ public class User {
         this.login = login;
         this.password = password;
         this.accessRole = role;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public Long getId() {

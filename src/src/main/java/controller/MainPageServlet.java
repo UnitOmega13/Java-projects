@@ -5,6 +5,8 @@ import model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import service.UserService;
+import utils.PasswordSaltGenerator;
+import utils.SHA256HashUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +27,14 @@ public class MainPageServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
-        String encryptedPassword = DigestUtils.sha256Hex(request.getParameter("password"));
         Optional<User> optionalUser = userService.getUserByEmail(email);
-        if (optionalUser.isPresent() && passwordCheck(encryptedPassword, optionalUser.get())) {
-            session.setAttribute("user", optionalUser.get());
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            String encryptedPassword = PasswordSaltGenerator.saltPassword(
+                    SHA256HashUtil.getSha256(request.getParameter("repeatedPassword")),
+                    SHA256HashUtil.getSha256(user.getSalt()));
+            if(user.getPassword().equals(encryptedPassword))
+                session.setAttribute("user", optionalUser.get());
             if (optionalUser.get().getAccessRole().equals("admin")){
                 response.sendRedirect("/admin/users");
             } else {
@@ -40,10 +46,5 @@ public class MainPageServlet extends HttpServlet {
             request.getRequestDispatcher("/").forward(request, response);
             LOGGER.info("User " + email + " does not enter");
         }
-    }
-
-    private boolean passwordCheck(String password, User user) {
-        String userPassword = user.getPassword();
-        return password.equals(userPassword);
     }
 }

@@ -12,5 +12,5 @@ public interface UsersDAO {
     Optional<User> getUserById(Long userId);
     void removeUser(Long userId);
     Optional<User> getUserByEmail(String email);
-    void updateUser(User newUser, User oldUser);
+    void updateUser(User newUser);
 }

@@ -11,7 +11,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class UsersDAOImpl implements UsersDAO {
-
     private static final Logger logger = Logger.getLogger(DataBase.class);
 
     @Override
@@ -53,7 +52,7 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public void updateUser(User oldUser, User newUser) {
+    public void updateUser(User oldUser) {
 
     }
 }

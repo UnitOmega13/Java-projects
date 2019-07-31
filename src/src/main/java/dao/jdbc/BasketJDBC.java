@@ -119,7 +119,6 @@ public class BasketJDBC implements BasketDAO {
         return false;
     }
 
-    @Override
     public double getSumOfOrder(User user) {
         try (Connection connection = JDBCUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_SUM_OF_ORDER);

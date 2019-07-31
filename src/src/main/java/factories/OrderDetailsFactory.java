@@ -1,6 +1,6 @@
 package factories;
 
-import service.Impl.OrserDetailsServiceImpl;
+import service.Impl.OrderDetailsServiceImpl;
 import service.OrderService;
 
 public class OrderDetailsFactory {
@@ -11,7 +11,7 @@ public class OrderDetailsFactory {
 
     public static synchronized OrderService getInstance() {
         if (instance == null) {
-            instance = new OrserDetailsServiceImpl();
+            instance = new OrderDetailsServiceImpl();
         }
         return instance;
     }

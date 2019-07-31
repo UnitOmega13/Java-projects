@@ -5,6 +5,8 @@ import model.User;
 import service.UserService;
 import utils.IdGenerator;
 import org.apache.commons.codec.digest.DigestUtils;
+import utils.PasswordSaltGenerator;
+import utils.SHA256HashUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,11 +30,16 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long id = IdGenerator.generateId();
+        String salt = PasswordSaltGenerator.getSalt();
         String login = req.getParameter("login");
         String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String password = PasswordSaltGenerator.saltPassword(
+                SHA256HashUtil.getSha256(req.getParameter("password")),
+                SHA256HashUtil.getSha256(salt));
         String accessRole = req.getParameter("accessRole");
-        String repeatedPassword = req.getParameter("repeatedPassword");
+        String repeatedPassword = PasswordSaltGenerator.saltPassword(
+                SHA256HashUtil.getSha256(req.getParameter("repeatedPassword")),
+                SHA256HashUtil.getSha256(salt));
         if (email.isEmpty() || login.isEmpty() || password.isEmpty()) {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);

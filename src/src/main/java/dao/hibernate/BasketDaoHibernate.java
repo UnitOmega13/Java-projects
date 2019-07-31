@@ -102,7 +102,6 @@ public class BasketDaoHibernate implements BasketDAO {
         return getUserBasket(user).isPresent();
     }
 
-    @Override
     public double getSumOfOrder(User user) {
         if (getUserBasket(user).isPresent()) {
             return getUserBasket(user).get().getProducts()

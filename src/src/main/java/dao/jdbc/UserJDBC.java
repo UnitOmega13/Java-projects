@@ -61,10 +61,10 @@ public class UserJDBC implements UsersDAO {
     }
 
     @Override
-    public void updateUser(User user, User oldUser) {
+    public void updateUser(User user) {
         Optional<User> oldUserOptional = getUserById(user.getId());
         if (oldUserOptional.isPresent()) {
-            oldUser = oldUserOptional.get();
+            User oldUser = oldUserOptional.get();
             oldUser.setLogin(user.getLogin());
             oldUser.setEmail(user.getEmail());
             oldUser.setPassword(user.getPassword());

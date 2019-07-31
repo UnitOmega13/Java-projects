@@ -16,8 +16,6 @@ import java.util.Optional;
 
 @WebServlet(value = "/admin/users/edit")
 public class ChangeUserServlet extends HttpServlet {
-
-    private static final Logger LOGGER = Logger.getLogger(String.valueOf(ChangeProductServlet.class));
     private static final UserService userService = UserServiceFactory.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,15 +41,16 @@ public class ChangeUserServlet extends HttpServlet {
         Optional<User> optionalUser = userService.getUserById(userId);
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
-            setUserAttributes(userId, user.getEmail(), user.getAccessRole(), request);
+            setUserAttributes(userId, user.getEmail(), user.getLogin(), user.getAccessRole(), request);
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
     }
 
-    private void setUserAttributes(Long userId, String email, String accessRole,
+    private void setUserAttributes(Long userId, String email, String login, String accessRole,
                                    HttpServletRequest request) {
         request.setAttribute("userId", userId);
         request.setAttribute("email", email);
+        request.setAttribute("login", login);
         request.setAttribute("accessRole", accessRole);
         request.setAttribute("action", "/admin/users/edit");
     }
