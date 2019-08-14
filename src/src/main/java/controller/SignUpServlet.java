@@ -33,13 +33,11 @@ public class SignUpServlet extends HttpServlet {
         String salt = PasswordSaltGenerator.getSalt();
         String login = req.getParameter("login");
         String email = req.getParameter("email");
-        String password = PasswordSaltGenerator.saltPassword(
-                SHA256HashUtil.getSha256(req.getParameter("password")),
-                SHA256HashUtil.getSha256(salt));
+        String password = SHA256HashUtil.getSha256(PasswordSaltGenerator.saltPassword(
+                    request.getParameter("repeatedPassword"), salt);
         String accessRole = req.getParameter("accessRole");
-        String repeatedPassword = PasswordSaltGenerator.saltPassword(
-                SHA256HashUtil.getSha256(req.getParameter("repeatedPassword")),
-                SHA256HashUtil.getSha256(salt));
+        String repeatedPassword = SHA256HashUtil.getSha256(PasswordSaltGenerator.saltPassword(
+                    request.getParameter("repeatedPassword"), salt);
         if (email.isEmpty() || login.isEmpty() || password.isEmpty()) {
             req.setAttribute("error", "Empty fields!");
             req.getRequestDispatcher("registration.jsp").forward(req, resp);
