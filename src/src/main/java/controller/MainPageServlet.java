@@ -30,9 +30,8 @@ public class MainPageServlet extends HttpServlet {
         Optional<User> optionalUser = userService.getUserByEmail(email);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-            String encryptedPassword = PasswordSaltGenerator.saltPassword(
-                    SHA256HashUtil.getSha256(request.getParameter("repeatedPassword")),
-                    SHA256HashUtil.getSha256(user.getSalt()));
+            String encryptedPassword = SHA256HashUtil.getSha256(PasswordSaltGenerator.saltPassword(
+                    request.getParameter("repeatedPassword"), user.getSalt());
             if(user.getPassword().equals(encryptedPassword))
                 session.setAttribute("user", optionalUser.get());
             if (optionalUser.get().getAccessRole().equals("admin")){
