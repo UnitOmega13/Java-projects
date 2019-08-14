@@ -22,7 +22,8 @@ public class ChangeUserServlet extends HttpServlet {
             throws ServletException, IOException {
         long productId = Long.parseLong(request.getParameter("productId"));
         request.setAttribute("userId", productId);
-        if (userService.getUserById(productId).isPresent()) {
+        User user = userService.getUserById(productId);
+        if (user.isPresent()) {
             request.setAttribute("email",
                     userService.getUserById(productId).get().getEmail());
             request.setAttribute("login",
