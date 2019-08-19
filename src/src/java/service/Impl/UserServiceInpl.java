@@ -3,7 +3,6 @@ package service.Impl;
 import dao.UsersDAO;
 import factories.UserDAOFactory;
 import model.User;
-import service.DataBase;
 import service.UserService;
 
 import java.util.List;

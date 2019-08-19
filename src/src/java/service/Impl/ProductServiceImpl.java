@@ -3,7 +3,6 @@ package service.Impl;
 import dao.ProductDAO;
 import factories.ProductDAOFactory;
 import model.Product;
-import service.DataBase;
 import service.ProductService;
 
 import java.util.List;

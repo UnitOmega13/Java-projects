@@ -2,7 +2,6 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
-import service.DataBase;
 import service.UserService;
 
 import javax.servlet.ServletException;
