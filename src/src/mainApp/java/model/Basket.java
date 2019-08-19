@@ -13,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Entity

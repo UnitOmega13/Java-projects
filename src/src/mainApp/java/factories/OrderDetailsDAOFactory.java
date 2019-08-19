@@ -2,7 +2,6 @@ package factories;
 
 import dao.OrderDetailsDAO;
 import dao.hibernate.OrderDaoHibernate;
-import dao.impl.OrderDetailsDAOImpl;
 
 public class OrderDetailsDAOFactory {
     private static OrderDetailsDAO instance;

@@ -2,7 +2,6 @@ package factories;
 
 import dao.UsersDAO;
 import dao.hibernate.UserDaoHibernate;
-import dao.impl.UsersDAOImpl;
 
 public class UserDAOFactory {
 

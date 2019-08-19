@@ -2,7 +2,6 @@ package factories;
 
 import dao.ProductDAO;
 import dao.hibernate.ProductDaoHibernate;
-import dao.impl.ProductDAOImpl;
 
 public class ProductDAOFactory {
 

@@ -2,7 +2,6 @@ package factories;
 
 import dao.BasketDAO;
 import dao.hibernate.BasketDaoHibernate;
-import dao.impl.BasketDAOImpl;
 
 public class BasketDAOFactory {
     private static BasketDAO instance;

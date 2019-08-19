@@ -2,7 +2,6 @@ package controller;
 
 import factories.UserServiceFactory;
 import model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import service.UserService;
 
