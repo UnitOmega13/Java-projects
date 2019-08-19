@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 import java.util.logging.XMLFormatter;
 
 public class LoggetHandlerTest {
-
 	private static void configureLogging() {
 		Logger logger = Logger.getLogger("org.stepic.java");
 		logger.setLevel(Level.ALL);

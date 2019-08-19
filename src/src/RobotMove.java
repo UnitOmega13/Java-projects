@@ -12,8 +12,7 @@ public class RobotMove {
 				robotConnection = robotConnectionManager.getConnection();
 			} catch (RobotConnectionException e) {
 				continue;
-			}
-			try {
+			} try {
 				robotConnection.moveRobotTo(toX, toY);
 				return;
 			} catch (RobotConnectionException e) {
