@@ -1,6 +1,6 @@
-package factories;
+package main.factories;
 
-import model.Product;
+import main.model.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

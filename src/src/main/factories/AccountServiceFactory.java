@@ -1,6 +1,6 @@
-package factories;
+package main.factories;
 
-import service.AccountService;
+import main.service.AccountService;
 
 public class AccountServiceFactory {
 

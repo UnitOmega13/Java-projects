@@ -1,13 +1,10 @@
-package controller;
+package main.controller;
 
-import dao.impl.ProductDAO;
-import factories.AccountServiceFactory;
-import factories.ProductDAOFactory;
-import model.Product;
-import service.AccountService;
+import main.dao.impl.ProductDAO;
+import main.factories.ProductDAOFactory;
+import main.model.Product;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

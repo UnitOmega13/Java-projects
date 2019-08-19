@@ -1,10 +1,10 @@
-package dao.impl;
+package main.dao.impl;
 
 import java.util.List;
 
-import dao.ProductDAOInterface;
-import model.Product;
-import service.DataBaseService;
+import main.dao.ProductDAOInterface;
+import main.model.Product;
+import main.service.DataBaseService;
 
 public class ProductDAO implements ProductDAOInterface {
 

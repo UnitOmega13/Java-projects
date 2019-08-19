@@ -7,7 +7,7 @@
     <display-name>Simple Servlet Application</display-name>
     <servlet>
         <servlet-name>productServlet</servlet-name>
-        <servlet-class>controller.ProductRegistrationServlet</servlet-class>
+        <servlet-class>main.controller.ProductRegistrationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>Registration</servlet-name>
-        <servlet-class>controller.SignUpServlet</servlet-class>
+        <servlet-class>main.controller.SignUpServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>Users</servlet-name>
-        <servlet-class>controller.UsersServlet</servlet-class>
+        <servlet-class>main.controller.UsersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

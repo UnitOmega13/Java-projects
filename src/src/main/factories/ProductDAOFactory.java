@@ -1,6 +1,6 @@
-package factories;
+package main.factories;
 
-import dao.impl.ProductDAO;
+import main.dao.impl.ProductDAO;
 
 public class ProductDAOFactory {
 

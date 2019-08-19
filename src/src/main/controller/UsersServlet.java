@@ -1,13 +1,6 @@
-package controller;
-
-import dao.impl.ProductDAO;
-import dao.impl.UsersDAO;
-import factories.ProductDAOFactory;
-import factories.UserDAOFactory;
-import model.User;
+package main.controller;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package model;
+package main.model;
 
 import javax.persistence.Table;
 import javax.persistence.Entity;

@@ -1,6 +1,6 @@
-package factories;
+package main.factories;
 
-import dao.impl.UsersDAO;
+import main.dao.impl.UsersDAO;
 
 public class UserDAOFactory {
 

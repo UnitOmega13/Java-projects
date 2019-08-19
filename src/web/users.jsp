@@ -1,9 +1,9 @@
-<%@ page import="model.User" %>
+<%@ page import="main.model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="factories.UserDAOFactory" %>
+<%@ page import="main.factories.UserDAOFactory" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="model.Product" %>
-<%@ page import="factories.ProductDAOFactory" %><%--
+<%@ page import="main.model.Product" %>
+<%@ page import="main.factories.ProductDAOFactory" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 05.07.2019
