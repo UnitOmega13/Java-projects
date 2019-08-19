@@ -26,6 +26,7 @@ public class SignUpServlet extends HttpServlet {
         request.getServletContext().getRequestDispatcher("/registration.jsp").forward(request, response);
     }
 
+    @Test
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
